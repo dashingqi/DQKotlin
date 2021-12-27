@@ -3,6 +3,7 @@ package com.dashingqi.dqkotlin
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.core.content.res.ResourcesCompat
+import com.dashingqi.dqkotlin.sealed.Person
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -15,6 +16,7 @@ class MainActivity : AppCompatActivity() {
         plusMethod()
         requireMethod()
         method()
+        enumMethod()
 
     }
 
@@ -126,5 +128,11 @@ class MainActivity : AppCompatActivity() {
             "DashingQi"
         }
         println("subName2 is $subName2")
+    }
+
+    private fun enumMethod() {
+        val women = Person.WOMEN
+        val man = Person.WOMEN
+        println("enum boolean  ${women == man}")
     }
 }
