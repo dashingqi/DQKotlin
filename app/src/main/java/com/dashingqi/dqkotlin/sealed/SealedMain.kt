@@ -9,6 +9,14 @@ fun main() {
     val man = Person.MAN
     val women = Person.WOMEN
     println("${man == women}")
+    val scheme: String? = null
+    scheme?.let {
+
+    }
+
+    scheme.takeIf { !it.isNullOrEmpty() }?.apply {
+
+    }
 
 
     when (val item: SealedClass = getSealedClass()) {
