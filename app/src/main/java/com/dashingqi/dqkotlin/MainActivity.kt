@@ -3,6 +3,7 @@ package com.dashingqi.dqkotlin
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.core.content.res.ResourcesCompat
+import com.dashingqi.dqkotlin.sealed.Java
 import com.dashingqi.dqkotlin.sealed.Person
 
 class MainActivity : AppCompatActivity() {
@@ -17,6 +18,7 @@ class MainActivity : AppCompatActivity() {
         requireMethod()
         method()
         enumMethod()
+        sealedClassMethod()
 
     }
 
@@ -134,5 +136,11 @@ class MainActivity : AppCompatActivity() {
         val women = Person.WOMEN
         val man = Person.WOMEN
         println("enum boolean  ${women == man}")
+    }
+
+    private fun sealedClassMethod(){
+        val java = Java("2")
+        val java1 = Java("2")
+        println("sealed classes is ${java == java1}") // false
     }
 }

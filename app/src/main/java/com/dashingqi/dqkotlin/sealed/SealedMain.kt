@@ -10,6 +10,7 @@ fun main() {
     val women = Person.WOMEN
     println("${man == women}")
 
+
     when (val item: SealedClass = getSealedClass()) {
         is Java -> {
         }

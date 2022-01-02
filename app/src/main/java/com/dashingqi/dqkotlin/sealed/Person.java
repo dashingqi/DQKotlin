@@ -6,7 +6,7 @@ package com.dashingqi.dqkotlin.sealed;
  * @since 2021/12/27
  */
 public enum Person {
-    CHILDRNE("efdf"),
+//    CHILDRNE("efdf"),
     MAN(1),
     WOMEN(2);
     private int age;
