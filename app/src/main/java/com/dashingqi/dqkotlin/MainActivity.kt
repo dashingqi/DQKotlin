@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.core.content.res.ResourcesCompat
 import com.dashingqi.dqkotlin.sealed.Java
 import com.dashingqi.dqkotlin.sealed.Person
+import kotlin.concurrent.thread
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -20,6 +21,15 @@ class MainActivity : AppCompatActivity() {
         enumMethod()
         sealedClassMethod()
 
+        println("result is ${lock("dashingqi", "zhangqi", ::getResult)}")
+
+
+
+        thread {
+            Runnable {
+                println("current thread is ${Thread.currentThread().name}")
+            }.run()
+        }
     }
 
     // 解构声明不要和数据类一起使用
@@ -138,9 +148,15 @@ class MainActivity : AppCompatActivity() {
         println("enum boolean  ${women == man}")
     }
 
-    private fun sealedClassMethod(){
+    private fun sealedClassMethod() {
         val java = Java("2")
         val java1 = Java("2")
         println("sealed classes is ${java == java1}") // false
+    }
+
+    private fun getResult(str: String, str2: String): String = "result is {$str , $str2}"
+
+    private fun lock(str: String, str2: String, method: (str: String, str2: String) -> String): String {
+        return method.invoke(str, str2)
     }
 }
