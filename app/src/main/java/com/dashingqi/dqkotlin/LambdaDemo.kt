@@ -5,13 +5,14 @@ package com.dashingqi.dqkotlin
  * @since 2021/12/23
  */
 
- fun request(type: Int, call: (code: Int, type: Int) -> Unit) {
+fun request(type: Int, call: (code: Int, type: Int) -> Unit) {
     call(200, type)
 }
 
-fun run(){
+fun run() {
     val message = "message"
     request(1) { code, type ->
         println(message)
     }
 }
+
