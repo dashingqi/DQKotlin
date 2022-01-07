@@ -2,9 +2,6 @@ package com.dashingqi.dqkotlin
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.core.content.res.ResourcesCompat
-import com.dashingqi.dqkotlin.sealed.Java
-import com.dashingqi.dqkotlin.sealed.Person
 import kotlin.concurrent.thread
 
 class MainActivity : AppCompatActivity() {
@@ -18,8 +15,6 @@ class MainActivity : AppCompatActivity() {
         plusMethod()
         requireMethod()
         method()
-        enumMethod()
-        sealedClassMethod()
 
         println("result is ${lock("dashingqi", "zhangqi", ::getResult)}")
 
@@ -140,18 +135,6 @@ class MainActivity : AppCompatActivity() {
             "DashingQi"
         }
         println("subName2 is $subName2")
-    }
-
-    private fun enumMethod() {
-        val women = Person.WOMEN
-        val man = Person.WOMEN
-        println("enum boolean  ${women == man}")
-    }
-
-    private fun sealedClassMethod() {
-        val java = Java("2")
-        val java1 = Java("2")
-        println("sealed classes is ${java == java1}") // false
     }
 
     private fun getResult(str: String, str2: String): String = "result is {$str , $str2}"
