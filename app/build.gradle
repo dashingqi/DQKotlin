@@ -24,7 +24,9 @@ android {
     }
 
     kotlinOptions {
-        jvmTarget = '1.8'
+        jvmTarget = '11'
+        // 不断前进的 激进
+//        freeCompilerArgs += '-progressive'
     }
 }
 
