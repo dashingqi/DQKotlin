@@ -1,10 +1,10 @@
-package com.dashingqi.dqkotlin
+package com.dashingqi.dqkotlin.extend
 
 /**
  * @author zhangqi61
  * @since 2022/1/21
  */
-class Person(private val age: Int, var name: String) {
+open class Person(private val age: Int, var name: String) {
     //    fun isAdult() = age > 18
     // 将isAdult 变成Person的属性
     val isAdult
@@ -28,4 +28,9 @@ class Person(private val age: Int, var name: String) {
             field = value
             print("")
         }
+
+    // 声明成open 才能被子类重写
+    open fun doSomething() {
+
+    }
 }

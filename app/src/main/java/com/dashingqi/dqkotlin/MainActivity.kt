@@ -2,6 +2,7 @@ package com.dashingqi.dqkotlin
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.dashingqi.dqkotlin.extend.Person
 import kotlin.concurrent.thread
 
 class MainActivity : AppCompatActivity() {
