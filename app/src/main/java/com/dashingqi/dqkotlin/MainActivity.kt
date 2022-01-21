@@ -13,6 +13,9 @@ class MainActivity : AppCompatActivity() {
                 println("current thread is ${Thread.currentThread().name}")
             }.run()
         }
+
+        val person = Person(20, "DashingQi")
+        var adult = person.isAdult
     }
 
 }
