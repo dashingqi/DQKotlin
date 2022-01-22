@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import com.dashingqi.dqkotlin.extend.Person
 import kotlin.concurrent.thread
+import kotlin.system.exitProcess
 
 class MainActivity : AppCompatActivity() {
     private val TAG = "MainActivity"
@@ -23,8 +24,7 @@ class MainActivity : AppCompatActivity() {
         Log.d(TAG, "max is $max ")
         person.age = 17
         val templateMax = person.isMax
-        Log.d(TAG, "templateMax is $templateMax");
-
+        Log.d(TAG, "templateMax is $templateMax")
     }
 
 }
