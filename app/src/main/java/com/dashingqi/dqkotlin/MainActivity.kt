@@ -17,14 +17,6 @@ class MainActivity : AppCompatActivity() {
                 println("current thread is ${Thread.currentThread().name}")
             }.run()
         }
-
-        val person = Person(20, "DashingQi")
-        var adult = person.isAdult
-        val max = person.isMax
-        Log.d(TAG, "max is $max ")
-        person.age = 17
-        val templateMax = person.isMax
-        Log.d(TAG, "templateMax is $templateMax")
     }
 
 }
