@@ -4,7 +4,7 @@ package com.dashingqi.dqkotlin.extend
  * @author zhangqi61
  * @since 2022/1/21
  */
-open class Person(private val age: Int, var name: String) {
+open class Person(var age: Int, var name: String) {
     //    fun isAdult() = age > 18
     // 将isAdult 变成Person的属性
     val isAdult
@@ -33,4 +33,7 @@ open class Person(private val age: Int, var name: String) {
     open fun doSomething() {
 
     }
+
+    // 这样声明是有问题的
+    val isMax = age > 18
 }
