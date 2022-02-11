@@ -69,5 +69,23 @@ class MainActivity : AppCompatActivity() {
         return this
     }
 
+    fun fun1(action: () -> Unit) {
+
+    }
+
+    inline fun lambdaFun(noinline action: () -> Unit, action1: () -> Unit) {
+        lambdaFun1(action)
+    }
+
+    fun lambdaFun1(action: () -> Unit) {
+
+    }
+
+    inline fun lambdaFun2(noinline action: () -> Unit, crossinline action1: () -> Unit): () -> Unit {
+        action.invoke()
+        return action
+    }
+
+
 
 }

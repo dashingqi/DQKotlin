@@ -13,5 +13,10 @@ class ExampleUnitTest {
     @Test
     fun addition_isCorrect() {
         assertEquals(4, 2 + 2)
+
+        val text = "Android Studio provides the fastest tools for building apps on every type of Android"
+        val processText = TextProcessorV1().processText(text)
+        assertEquals(2, processText[0].frequency)
+        assertEquals("Android", processText[0].world)
     }
 }
