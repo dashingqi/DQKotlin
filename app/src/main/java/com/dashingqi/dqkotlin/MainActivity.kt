@@ -50,6 +50,46 @@ class MainActivity : AppCompatActivity() {
         textView.setOnClickListener {
 
         }
+
+        // lambda 表达式演变 匿名内部类
+        textView.setOnClickListener(object :View.OnClickListener{
+            override fun onClick(v: View?) {
+            }
+
+        })
+
+        // object关键字可以省略掉,不再是匿名内部类，而是lambda表达式
+        textView.setOnClickListener(View.OnClickListener { view: View ->
+        })
+
+        // View.OnClickListener 是SAM 构造器，lambda表达式是不需要它的
+        textView.setOnClickListener({ view:View->
+        })
+
+        // kotlin是具有类型推导的
+        textView.setOnClickListener({view ->
+
+        })
+
+        // lambda表达式只有一的参数时，可以使用it
+        textView.setOnClickListener({it->
+
+        })
+
+        // lambda表达式是中it可以被省略
+
+        textView.setOnClickListener({})
+
+        // lambda表达式作为函数最后一个参数时是可以放到括号外面的
+
+        textView.setOnClickListener(){
+
+        }
+
+        // 当函数参数只有一个lambda表达式是，括号是可以省略的
+        textView.setOnClickListener {
+
+        }
     }
 
     /**
