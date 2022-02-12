@@ -48,14 +48,5 @@ class TextProcessorV1 {
         return list
     }
 
-    @JvmName("mapToList(StringToString)")
-    inline fun <T> Map<String, String>.mapToList(transform: (Map.Entry<String, String>) -> T): MutableList<T> {
-        val list = mutableListOf<T>()
-        for (entry in this) {
-            val freq = transform.invoke(entry)
-            list.add(freq)
-        }
-        return list
-    }
 }
 

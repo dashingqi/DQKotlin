@@ -2,14 +2,18 @@ package com.dashingqi.dqkotlin
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.TextView
+
+const val TAG = "MainActivity"
 
 class MainActivity : AppCompatActivity() {
 
     private val textView by lazy {
         findViewById<TextView>(R.id.tv)
     }
+    val action1: (() -> Unit)? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -17,6 +21,10 @@ class MainActivity : AppCompatActivity() {
         val user = User("Dashingqi", 12)
         user.apply {
 
+        }
+
+        fun1 {
+            Log.d(TAG, ": ")
         }
         textView.setOnClickListener(object : View.OnClickListener {
             override fun onClick(v: View?) {
@@ -52,7 +60,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         // lambda 表达式演变 匿名内部类
-        textView.setOnClickListener(object :View.OnClickListener{
+        textView.setOnClickListener(object : View.OnClickListener {
             override fun onClick(v: View?) {
             }
 
@@ -63,16 +71,16 @@ class MainActivity : AppCompatActivity() {
         })
 
         // View.OnClickListener 是SAM 构造器，lambda表达式是不需要它的
-        textView.setOnClickListener({ view:View->
+        textView.setOnClickListener({ view: View ->
         })
 
         // kotlin是具有类型推导的
-        textView.setOnClickListener({view ->
+        textView.setOnClickListener({ view ->
 
         })
 
         // lambda表达式只有一的参数时，可以使用it
-        textView.setOnClickListener({it->
+        textView.setOnClickListener({ it ->
 
         })
 
@@ -82,7 +90,7 @@ class MainActivity : AppCompatActivity() {
 
         // lambda表达式作为函数最后一个参数时是可以放到括号外面的
 
-        textView.setOnClickListener(){
+        textView.setOnClickListener() {
 
         }
 
@@ -109,12 +117,18 @@ class MainActivity : AppCompatActivity() {
         return this
     }
 
-    fun fun1(action: () -> Unit) {
+    inline fun fun1(action: () -> Unit) {
+        Log.d(TAG, ": nihao1")
+        action.invoke()
 
     }
 
-    inline fun lambdaFun(noinline action: () -> Unit, action1: () -> Unit) {
+    // 当声明一个高阶函数，参数是函数类型，同时返回值也是函数类型
+    // 该函数类型还被用作其他高阶函数的参数，此时就需要使用noinline
+    //
+    inline fun lambdaFun(noinline action: () -> Unit, action1: () -> Unit): () -> Unit {
         lambdaFun1(action)
+        return action
     }
 
     fun lambdaFun1(action: () -> Unit) {
@@ -125,6 +139,24 @@ class MainActivity : AppCompatActivity() {
         action.invoke()
         return action
     }
+
+    // ====================return难题===============================
+   inline fun returnFun( crossinline action: () -> Unit){
+        fun2 {
+            Log.d(TAG, "returnFun")
+            // 如果fun2定义成正常的高阶函数，直接使用return是编译不通过的
+            // 如果想使用return 关键字可以将fun2定义成内联的高阶函数
+            action()
+        }
+    }
+
+     fun fun2(action: () -> Unit) {
+        Log.d(TAG, "调用前")
+        action.invoke()
+        Log.d(TAG, "调用后")
+    }
+
+    // crossinline的作用是当有被这个修饰的参数会告诉IED来检查 该lambda表达式中是否有return语句
 
 
 
