@@ -3,10 +3,8 @@ package com.dashingqi.dqkotlin
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import com.dashingqi.http.HttpV1
 import com.dashingqi.http.HttpV2
 import com.dashingqi.service.ApiService
-import com.dashingqi.service.WanAndroidService
 import kotlin.concurrent.thread
 
 
