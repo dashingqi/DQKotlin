@@ -25,6 +25,8 @@ class MainActivity : AppCompatActivity() {
         person.age = 17
         val templateMax = person.isMax
         Log.d(TAG, "templateMax is $templateMax")
+
+        TruCatch.perform(null)
     }
 
 }

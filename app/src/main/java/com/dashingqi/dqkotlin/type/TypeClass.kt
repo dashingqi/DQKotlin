@@ -17,11 +17,11 @@ var d: Long? = 4L
 
 // 用 var 定义可为空的Long，先赋值，然后改为null
 var e: Long? = 5L
-e = null
+//e = null
 
 // 用 val 定义可为空的Long，直接赋值null
 val f: Long? = null
 
 // 用 var 定义可为空的Long，先赋值null，然后赋值数字
 var g: Long? = null
-g = 6L
+//g = 6L
