@@ -3,8 +3,10 @@ package com.dashingqi.dqkotlin
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import com.dashingqi.coroutine.channel.channelMain
 import com.dashingqi.http.HttpV2
 import com.dashingqi.service.ApiService
+import kotlinx.coroutines.runBlocking
 import kotlin.concurrent.thread
 
 
@@ -21,6 +23,10 @@ class MainActivity : AppCompatActivity() {
                 val wxArticle = wanAndroidService.repos(lang = "kotlin", since = "weekly")
                 Log.d(TAG, "wxArticle data is ${wxArticle?.msg}")
             }.run()
+        }
+
+        runBlocking {
+            channelMain()
         }
     }
 
