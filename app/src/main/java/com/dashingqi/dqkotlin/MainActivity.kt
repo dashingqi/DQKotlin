@@ -3,7 +3,8 @@ package com.dashingqi.dqkotlin
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import com.dashingqi.coroutine.channel.channelMain
+import com.dashingqi.coroutine.follow.launchIn
+import com.dashingqi.coroutine.follow.withContextFlow
 import com.dashingqi.http.HttpV2
 import com.dashingqi.service.ApiService
 import kotlinx.coroutines.runBlocking
@@ -25,8 +26,23 @@ class MainActivity : AppCompatActivity() {
             }.run()
         }
 
+//        runBlocking {
+//            channelMain()
+//        }
+
+//        runBlocking {
+//            flowOnCompletion()
+//        }
+
+//        runBlocking {
+//            flowOn()
+//        }
+//        runBlocking {
+//            launchIn()
+//        }
+
         runBlocking {
-            channelMain()
+            withContextFlow()
         }
     }
 
