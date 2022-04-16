@@ -6,6 +6,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.withContext
+import java.lang.IllegalStateException
 import kotlin.coroutines.EmptyCoroutineContext
 
 /**
@@ -74,5 +75,46 @@ suspend fun withContextFlow() {
         .collect {
             logX("Result is $it")
         }
+}
+
+suspend fun onFlowLifecycle() {
+    flow<Int> {
+        logX("emit perform before")
+        emit(1)
+        logX("emit perform after")
+    }
+        .flowOn(Dispatchers.IO)
+        .onStart {
+            logX("onStart perform")
+        }
+        .map {
+            logX("Map perform")
+            it * 2
+        }
+
+        .onCompletion {
+            logX("onCompletion perform")
+        }
+        .collect {
+            logX("collect perform")
+        }
+
+}
+
+suspend fun onFlowCatch() {
+    val flow = flow<Int> {
+        emit(1)
+        emit(2)
+        throw IllegalStateException()
+        emit(3)
+    }
+    flow
+        .map {
+            it * 2
+        }
+        .catch {
+            logX("catch $it")
+        }
+        .collect()
 }
 

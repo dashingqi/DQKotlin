@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import com.dashingqi.coroutine.follow.launchIn
+import com.dashingqi.coroutine.follow.onFlowCatch
+import com.dashingqi.coroutine.follow.onFlowLifecycle
 import com.dashingqi.coroutine.follow.withContextFlow
 import com.dashingqi.http.HttpV2
 import com.dashingqi.service.ApiService
@@ -26,23 +28,9 @@ class MainActivity : AppCompatActivity() {
             }.run()
         }
 
-//        runBlocking {
-//            channelMain()
-//        }
-
-//        runBlocking {
-//            flowOnCompletion()
-//        }
-
-//        runBlocking {
-//            flowOn()
-//        }
-//        runBlocking {
-//            launchIn()
-//        }
-
         runBlocking {
-            withContextFlow()
+            onFlowLifecycle()
+//            onFlowCatch()
         }
     }
 
