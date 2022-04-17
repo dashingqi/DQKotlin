@@ -7,6 +7,9 @@ import com.dashingqi.coroutine.follow.launchIn
 import com.dashingqi.coroutine.follow.onFlowCatch
 import com.dashingqi.coroutine.follow.onFlowLifecycle
 import com.dashingqi.coroutine.follow.withContextFlow
+import com.dashingqi.coroutine.select.cancelAllDeferred
+import com.dashingqi.coroutine.select.selectChannelMethod
+import com.dashingqi.coroutine.select.selectMethod
 import com.dashingqi.http.HttpV2
 import com.dashingqi.service.ApiService
 import kotlinx.coroutines.runBlocking
@@ -14,7 +17,7 @@ import kotlin.concurrent.thread
 
 
 class MainActivity : AppCompatActivity() {
-    private val TAG = "MainActivity"
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -29,9 +32,28 @@ class MainActivity : AppCompatActivity() {
         }
 
         runBlocking {
-            onFlowLifecycle()
+//            onFlowLifecycle()
 //            onFlowCatch()
+//            selectMethod()
+            //selectChannelMethod()
+//            selectChannelMethod()
+            cancelAllDeferred()
         }
+
+        val result = kotlin.runCatching {
+            val i = 3
+            6
+        }
+        result.onFailure {
+            Log.d(TAG, "onFailure perform  exception is $it")
+        }
+        result.onSuccess {
+            Log.d(TAG, "onSuccess perform result is $it")
+        }
+    }
+
+    companion object {
+        private const val TAG = "MainActivity"
     }
 
 }
