@@ -3,6 +3,8 @@ package com.dashingqi.dqkotlin
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import com.dashingqi.coroutine.current.coroutineCurrent
+import com.dashingqi.coroutine.current.coroutineCurrentJobs
 import com.dashingqi.coroutine.follow.launchIn
 import com.dashingqi.coroutine.follow.onFlowCatch
 import com.dashingqi.coroutine.follow.onFlowLifecycle
@@ -37,7 +39,9 @@ class MainActivity : AppCompatActivity() {
 //            selectMethod()
             //selectChannelMethod()
 //            selectChannelMethod()
-            cancelAllDeferred()
+//            cancelAllDeferred()
+//            coroutineCurrent()
+            coroutineCurrentJobs()
         }
 
         val result = kotlin.runCatching {
