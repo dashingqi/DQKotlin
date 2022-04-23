@@ -1,6 +1,7 @@
 package com.dashingqi.coroutine.current
 
 import kotlinx.coroutines.*
+import java.util.concurrent.Executors
 
 /**
  * @desc : 协程也需要处理多线程同步问题
@@ -36,5 +37,25 @@ fun coroutineCurrentJobs() = runBlocking {
 
     jobs.joinAll()
 
+    println("i = $i")
+}
+
+fun coroutineJobsInThread() = runBlocking {
+    val mySingleDispatcher = Executors.newSingleThreadExecutor {
+        Thread(it, "MySingleThread").apply { isDaemon = true }
+    }.asCoroutineDispatcher()
+
+    var i = 0
+    val jobs = mutableListOf<Job>()
+    repeat(10) {
+        val job = launch(mySingleDispatcher) {
+            println("Current thread is ${Thread.currentThread().name}")
+            repeat(1000) {
+                i++
+            }
+        }
+        jobs.add(job)
+    }
+    jobs.joinAll()
     println("i = $i")
 }

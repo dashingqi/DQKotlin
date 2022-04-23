@@ -8,6 +8,8 @@ import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import com.dashingqi.coroutine.current.coroutineCurrent
 import com.dashingqi.coroutine.current.coroutineCurrentJobs
+import com.dashingqi.coroutine.current.coroutineJobsInThread
+import com.dashingqi.coroutine.current.coroutineMutexMain
 import com.dashingqi.coroutine.follow.launchIn
 import com.dashingqi.coroutine.follow.onFlowCatch
 import com.dashingqi.coroutine.follow.onFlowLifecycle
@@ -44,7 +46,7 @@ class MainActivity : AppCompatActivity() {
                 }
                 .show()
         }
-        findViewById<TextView>(R.id.hl).postDelayed(runnable,6000)
+        findViewById<TextView>(R.id.hl).postDelayed(runnable, 6000)
         thread {
             Runnable {
                 Log.d(TAG, "current thread is ${Thread.currentThread().name} ")
@@ -63,7 +65,8 @@ class MainActivity : AppCompatActivity() {
 //            selectChannelMethod()
 //            cancelAllDeferred()
 //            coroutineCurrent()
-            coroutineCurrentJobs()
+            //coroutineCurrentJobs()
+            coroutineMutexMain()
         }
 
         val result = kotlin.runCatching {
@@ -77,32 +80,33 @@ class MainActivity : AppCompatActivity() {
             Log.d(TAG, "onSuccess perform result is $it")
         }
 
-        AlertDialog
-            .Builder(this)
-            .setTitle("测试测试")
-            .setMessage("这是一个严肃的测试")
-            .setCancelable(false)
-            .setPositiveButton("弹出Toast") { dialog, which ->
+        findViewById<TextView>(R.id.hl).setOnClickListener {
+            AlertDialog
+                .Builder(this)
+                .setTitle("测试测试")
+                .setMessage("这是一个严肃的测试")
+                .setCancelable(false)
+                .setPositiveButton("弹出Toast") { dialog, which ->
 
-            }
-            .setNegativeButton("弹出Toast") { dialog, which ->
-                XToast<XToast<*>>(this)
-                    .apply {
-                        setContentView(R.layout.layout_toast_hint)
-                        setText(R.id.message, "点我消失")
-                        setDuration(1000)
-                        setOnClickListener(
-                            R.id.message,
-                            XToast.OnClickListener<TextView?> { toast: XToast<*>, view: TextView? ->
-                                toast.cancel()
+                }
+                .setNegativeButton("弹出Toast") { dialog, which ->
+                    XToast<XToast<*>>(this)
+                        .apply {
+                            setContentView(R.layout.layout_toast_hint)
+                            setText(R.id.message, "点我消失")
+                            setDuration(1000)
+                            setOnClickListener(
+                                R.id.message,
+                                XToast.OnClickListener<TextView?> { toast: XToast<*>, view: TextView? ->
+                                    toast.cancel()
 
-                            })
+                                })
 
-                    }
-                    .show()
-            }
-            .show()
-
+                        }
+                        .show()
+                }
+                .show()
+        }
     }
 
     companion object {
