@@ -1,5 +1,6 @@
 package com.dashingqi.coroutine.current
 
+import android.util.Log
 import kotlinx.coroutines.*
 import java.util.concurrent.Executors
 
@@ -8,6 +9,8 @@ import java.util.concurrent.Executors
  * @author : zhangqi
  * @time : 2022/4/17 17:00
  */
+
+private const val TAG = "CoroutineCurrentMain"
 
 fun coroutineCurrent() = runBlocking {
     var i = 0
@@ -24,19 +27,21 @@ fun coroutineCurrent() = runBlocking {
 fun coroutineCurrentJobs() = runBlocking {
     var i = 0
     val jobs = mutableListOf<Job>()
+    val lock = Any()
 
     repeat(10) {
         val job = launch(Dispatchers.Default) {
-            println("Current thread is ${Thread.currentThread().name}")
+            Log.d(TAG, "Current thread is ${Thread.currentThread().name}")
             repeat(1000) {
-                i++
+                synchronized(lock) {
+                    i++
+                }
             }
         }
         jobs.add(job)
     }
 
     jobs.joinAll()
-
     println("i = $i")
 }
 
@@ -57,5 +62,5 @@ fun coroutineJobsInThread() = runBlocking {
         jobs.add(job)
     }
     jobs.joinAll()
-    println("i = $i")
+    Log.d(TAG, "i = $i")
 }
