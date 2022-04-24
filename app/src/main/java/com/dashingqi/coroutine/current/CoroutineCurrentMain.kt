@@ -34,6 +34,7 @@ fun coroutineCurrentJobs() = runBlocking {
             Log.d(TAG, "Current thread is ${Thread.currentThread().name}")
             repeat(1000) {
                 synchronized(lock) {
+                   // prepare()
                     i++
                 }
             }
@@ -43,6 +44,13 @@ fun coroutineCurrentJobs() = runBlocking {
 
     jobs.joinAll()
     println("i = $i")
+}
+
+/**
+ * synchronized 中不能使用 挂起函数
+ */
+suspend fun prepare(){
+
 }
 
 fun coroutineJobsInThread() = runBlocking {

@@ -2,21 +2,10 @@ package com.dashingqi.dqkotlin
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Handler
 import android.util.Log
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
-import com.dashingqi.coroutine.current.coroutineCurrent
-import com.dashingqi.coroutine.current.coroutineCurrentJobs
-import com.dashingqi.coroutine.current.coroutineJobsInThread
-import com.dashingqi.coroutine.current.coroutineMutexMain
-import com.dashingqi.coroutine.follow.launchIn
-import com.dashingqi.coroutine.follow.onFlowCatch
-import com.dashingqi.coroutine.follow.onFlowLifecycle
-import com.dashingqi.coroutine.follow.withContextFlow
-import com.dashingqi.coroutine.select.cancelAllDeferred
-import com.dashingqi.coroutine.select.selectChannelMethod
-import com.dashingqi.coroutine.select.selectMethod
+import com.dashingqi.coroutine.current.*
 import com.dashingqi.http.HttpV2
 import com.dashingqi.service.ApiService
 import com.hjq.xtoast.XToast
@@ -29,6 +18,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        mapOperate()
 
         val runnable = Runnable {
             XToast<XToast<*>>(this)
@@ -66,7 +56,10 @@ class MainActivity : AppCompatActivity() {
 //            cancelAllDeferred()
 //            coroutineCurrent()
             //coroutineCurrentJobs()
-            coroutineMutexMain()
+//            coroutineMutexMain()
+//            actorMain()
+            noShareState()
+            noShareStateMethod()
         }
 
         val result = kotlin.runCatching {
