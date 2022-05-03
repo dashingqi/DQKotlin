@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
+import com.dashingqi.coroutine.exception.coroutineException
 import com.dashingqi.coroutine.current.*
 import com.dashingqi.http.HttpV2
 import com.dashingqi.service.ApiService
@@ -58,8 +59,8 @@ class MainActivity : AppCompatActivity() {
             //coroutineCurrentJobs()
 //            coroutineMutexMain()
 //            actorMain()
-            noShareState()
-            noShareStateMethod()
+//            noShareState()
+//            noShareStateMethod()
         }
 
         val result = kotlin.runCatching {
@@ -100,6 +101,8 @@ class MainActivity : AppCompatActivity() {
                 }
                 .show()
         }
+
+        coroutineException()
     }
 
     companion object {
