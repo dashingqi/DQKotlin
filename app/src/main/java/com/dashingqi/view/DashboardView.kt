@@ -6,6 +6,8 @@ import android.util.AttributeSet
 import android.util.Log
 import android.view.View
 import com.dashingqi.ext.px
+import kotlin.math.cos
+import kotlin.math.sin
 
 /**
  * @desc : 仪表盘
@@ -15,21 +17,24 @@ import com.dashingqi.ext.px
 
 
 /** 仪表盘的半径*/
-val DASH_RADIUS = 150f.px
+private val DASH_RADIUS = 150f.px
 
-val POINT_LENGTH = 120f.px
+private val POINT_LENGTH = 120f.px
 
 /** 刻度个数*/
-const val MARK_COUNT = 20
+private const val MARK_COUNT = 20
+
+/** 当前指向的刻度 */
+private const val CURRENT_POINT_COUNT = 10
 
 /** 开口角度*/
-const val OPEN_ANGLE = 90
+private const val OPEN_ANGLE = 90f
 
 /** 刻度宽度*/
-val DASH_WIDTH = 2f.px
+private val DASH_WIDTH = 2f.px
 
 /** 刻度高度*/
-val DASH_LENGTH = 10f.px
+private val DASH_LENGTH = 10f.px
 
 const val TAG = "DashboardView"
 
@@ -67,7 +72,9 @@ class DashboardView(context: Context?, attrs: AttributeSet) :
             90f + OPEN_ANGLE / 2f,
             360f - OPEN_ANGLE
         )
+        // 计算Path的长度
         pathMeasure = PathMeasure(path, false)
+        // 计算每个刻度之间的距离
         val markAdvance = (pathMeasure.length - DASH_WIDTH) / MARK_COUNT
         arcPathDashPathEffect = PathDashPathEffect(
             dashPath,
@@ -93,6 +100,32 @@ class DashboardView(context: Context?, attrs: AttributeSet) :
         )
 
         paint.pathEffect = null
+
+        // 画指针
+        canvas.drawLine(
+            width / 2f,
+            height / 2f,
+            (width / 2f + POINT_LENGTH *
+                    cos(
+                        computePointRadians(MARK_COUNT, CURRENT_POINT_COUNT)
+                    )).toFloat(),
+            (height / 2f + POINT_LENGTH *
+                    sin(computePointRadians(MARK_COUNT, CURRENT_POINT_COUNT))).toFloat(),
+            paint
+        )
+    }
+
+    /**
+     *  计算指针的角度
+     * @param markCount Int 刻度的个数
+     * @param pointMark Int 当前指向的刻度
+     * @return Double 角度
+     */
+    private fun computePointRadians(markCount: Int, pointMark: Int): Double {
+        return Math.toRadians(
+            (90 + OPEN_ANGLE / 2f +
+                    ((360 - OPEN_ANGLE) / markCount) * pointMark).toDouble()
+        )
     }
 
 }
