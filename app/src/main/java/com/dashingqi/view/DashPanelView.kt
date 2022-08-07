@@ -38,7 +38,7 @@ private val DASH_LENGTH = 10f.px
 
 const val TAG = "DashboardView"
 
-class DashboardView(context: Context?, attrs: AttributeSet) :
+class DashPanelView(context: Context?, attrs: AttributeSet) :
     View(context, attrs) {
 
 
@@ -105,12 +105,14 @@ class DashboardView(context: Context?, attrs: AttributeSet) :
         canvas.drawLine(
             width / 2f,
             height / 2f,
-            (width / 2f + POINT_LENGTH *
+            width / 2f +
+                    POINT_LENGTH *
                     cos(
                         computePointRadians(MARK_COUNT, CURRENT_POINT_COUNT)
-                    )).toFloat(),
-            (height / 2f + POINT_LENGTH *
-                    sin(computePointRadians(MARK_COUNT, CURRENT_POINT_COUNT))).toFloat(),
+                    ).toFloat(),
+            height / 2f +
+                    POINT_LENGTH *
+                    sin(computePointRadians(MARK_COUNT, CURRENT_POINT_COUNT)).toFloat(),
             paint
         )
     }
