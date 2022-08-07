@@ -5,10 +5,9 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <com.dashingqi.view.PieView
+    <com.dashingqi.view.AvatarView
         android:id="@+id/hl"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        />
+        android:layout_height="match_parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
