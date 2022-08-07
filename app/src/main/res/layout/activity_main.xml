@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <com.dashingqi.view.DashPanelView
+    <com.dashingqi.view.PieView
         android:id="@+id/hl"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

@@ -36,7 +36,7 @@ private val DASH_WIDTH = 2f.px
 /** 刻度高度*/
 private val DASH_LENGTH = 10f.px
 
-const val TAG = "DashboardView"
+private const val TAG = "DashboardView"
 
 class DashPanelView(context: Context?, attrs: AttributeSet) :
     View(context, attrs) {
