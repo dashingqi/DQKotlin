@@ -9,15 +9,21 @@ import android.util.TypedValue
  * @time : 2022/8/6 16:30
  */
 
+
 /**
- * dp2Px
- * @receiver Float dp单位
- * @param value Float dp值
- * @return Float px值
+ * dp2px
+ * Float类型
  */
-val Float.px
+val Float.dp
     get() = TypedValue.applyDimension(
         TypedValue.COMPLEX_UNIT_DIP,
         this,
         Resources.getSystem().displayMetrics
     )
+
+/**
+ * dp2px
+ * Int类型
+ */
+val Int.dp
+    get() = this.toFloat().dp

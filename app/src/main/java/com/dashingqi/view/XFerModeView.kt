@@ -4,20 +4,20 @@ import android.content.Context
 import android.graphics.*
 import android.util.AttributeSet
 import android.view.View
-import com.dashingqi.ext.px
+import com.dashingqi.ext.dp
 
 /**
- * @desc : 圆头像View
+ * @desc : xfermode的使用以及理解
  * @author : zhangqi
  * @time : 2022/8/7 16:55
  */
 
 
-private val OVAL_PADDING_LEFT = 100f.px
+private val OVAL_PADDING_LEFT = 100f.dp
 
-private val OVAL_PADDING_TOP = 40f.px
+private val OVAL_PADDING_TOP = 40f.dp
 
-private val OVAL_WIDTH = 80f.px
+private val OVAL_WIDTH = 80f.dp
 
 class XFerModeView(context: Context?, attrs: AttributeSet?) : View(context, attrs) {
 
@@ -52,7 +52,7 @@ class XFerModeView(context: Context?, attrs: AttributeSet?) : View(context, attr
         paint.color = Color.parseColor("#00FAFF")
         canvas.drawOval(
             OVAL_WIDTH / 2f,
-            0f.px,
+            0f.dp,
             OVAL_WIDTH / 2f + OVAL_WIDTH,
             OVAL_WIDTH,
             paint
@@ -60,7 +60,7 @@ class XFerModeView(context: Context?, attrs: AttributeSet?) : View(context, attr
         paint.color = Color.parseColor("#8B00FF")
         canvas.setBitmap(squareBitmap)
         canvas.drawRect(
-            0f.px,
+            0f.dp,
             OVAL_WIDTH / 2f,
             OVAL_WIDTH,
             OVAL_WIDTH / 2f + OVAL_WIDTH,

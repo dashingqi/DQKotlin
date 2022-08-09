@@ -5,7 +5,7 @@ import android.graphics.*
 import android.util.AttributeSet
 import android.view.View
 import com.dashingqi.dqkotlin.R
-import com.dashingqi.ext.px
+import com.dashingqi.ext.dp
 
 /**
  * @desc : 圆头像View
@@ -15,10 +15,10 @@ import com.dashingqi.ext.px
 
 
 /** 画的图片宽度*/
-private val IMAGE_WIDTH = 200f.px
+private val IMAGE_WIDTH = 200f.dp
 
 /** 图片距离顶部与左部的距离*/
-private val IMAGE_PADDING = 40f.px
+private val IMAGE_PADDING = 40f.dp
 
 class AvatarView(context: Context?, attrs: AttributeSet?) : View(context, attrs) {
 

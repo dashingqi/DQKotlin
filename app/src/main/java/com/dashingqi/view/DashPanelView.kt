@@ -5,7 +5,7 @@ import android.graphics.*
 import android.util.AttributeSet
 import android.util.Log
 import android.view.View
-import com.dashingqi.ext.px
+import com.dashingqi.ext.dp
 import kotlin.math.cos
 import kotlin.math.sin
 
@@ -17,9 +17,9 @@ import kotlin.math.sin
 
 
 /** 仪表盘的半径*/
-private val DASH_RADIUS = 150f.px
+private val DASH_RADIUS = 150f.dp
 
-private val POINT_LENGTH = 120f.px
+private val POINT_LENGTH = 120f.dp
 
 /** 刻度个数*/
 private const val MARK_COUNT = 20
@@ -31,10 +31,10 @@ private const val CURRENT_POINT_COUNT = 10
 private const val OPEN_ANGLE = 90f
 
 /** 刻度宽度*/
-private val DASH_WIDTH = 2f.px
+private val DASH_WIDTH = 2f.dp
 
 /** 刻度高度*/
-private val DASH_LENGTH = 10f.px
+private val DASH_LENGTH = 10f.dp
 
 private const val TAG = "DashboardView"
 
@@ -53,7 +53,7 @@ class DashPanelView(context: Context?, attrs: AttributeSet) :
     lateinit var pathMeasure: PathMeasure
 
     init {
-        paint.strokeWidth = 3f.px
+        paint.strokeWidth = 3f.dp
         paint.style = Paint.Style.STROKE
         // 画的刻度
         dashPath.addRect(0f, 0f, DASH_WIDTH, DASH_LENGTH, Path.Direction.CCW)

@@ -5,7 +5,7 @@ import android.graphics.*
 import android.util.AttributeSet
 import android.util.Log
 import android.view.View
-import com.dashingqi.ext.px
+import com.dashingqi.ext.dp
 import kotlin.math.cos
 import kotlin.math.sin
 
@@ -17,10 +17,10 @@ import kotlin.math.sin
 
 
 /** 饼图的半径*/
-private val PIE_RADIUS = 150f.px
+private val PIE_RADIUS = 150f.dp
 
 /** 偏移量 */
-private val OFFSET_LENGTH = 24f.px
+private val OFFSET_LENGTH = 24f.dp
 
 /** 饼图的角度*/
 private val ANGLES = floatArrayOf(70f, 110f, 120f, 60f)
