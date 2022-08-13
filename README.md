@@ -48,5 +48,5 @@ canvas.drawText(
     verticalOffset,
     textPaint
 )
-![](https://upload-images.jianshu.io/upload_images/4997216-2e076dfe86a88aa5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 ```
+![](https://upload-images.jianshu.io/upload_images/4997216-2e076dfe86a88aa5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
