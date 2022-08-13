@@ -2,6 +2,7 @@ package com.dashingqi.view.text
 
 import android.content.Context
 import android.graphics.*
+import android.graphics.fonts.Font
 import android.util.AttributeSet
 import android.view.View
 import com.dashingqi.ext.dp
@@ -46,6 +47,8 @@ class CustomMeasureText(context: Context?, attrs: AttributeSet?) : View(context,
         textSize = TEXT_SIZE
     }
 
+    private val fontMetrics = Paint.FontMetrics()
+
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
         // 画一个圆圈
@@ -75,8 +78,32 @@ class CustomMeasureText(context: Context?, attrs: AttributeSet?) : View(context,
         canvas.drawText(
             HIGH_LINE_TEXT,
             width / 2f,
-            height / 2f + (textBounds.bottom - textBounds.top) / 2f,
+            height / 2f - (textBounds.bottom + textBounds.top) / 2f,
             paint
         )
+
+        // 画动态文字
+        paint.getFontMetrics(fontMetrics)
+        canvas.drawText(
+            "aaaa",
+            width / 2f,
+            height / 2f - (fontMetrics.descent + fontMetrics.ascent) / 2f,
+            paint
+        )
+
+        // 文字的贴边
+
+        //上贴边
+        paint.textAlign = Paint.Align.LEFT
+        paint.textSize = 150.dp
+        paint.getTextBounds("adab", 0, "abab".length, textBounds)
+        canvas.drawText("abab", -textBounds.left.toFloat(), -textBounds.top.toFloat(), paint)
+
+        // 左贴边
+        paint.textAlign = Paint.Align.LEFT
+        paint.textSize = 15.dp
+        paint.getFontMetrics(fontMetrics)
+        paint.getTextBounds("adab", 0, "abab".length, textBounds)
+        canvas.drawText("abab", -textBounds.left.toFloat(), -fontMetrics.top.toFloat(), paint)
     }
 }
