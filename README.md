@@ -88,3 +88,35 @@ canvas.drawText(
 )
 ```
 ![](https://upload-images.jianshu.io/upload_images/4997216-2e076dfe86a88aa5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+###### 区域裁剪以及几何变换
+```kotlin
+
+camera.rotateX(30f)
+// 设置投影点的位置 和屏幕像素关联
+// -6 是英寸 大概英寸的值
+camera.setLocation(0f, 0f, -6f * resources.displayMetrics.density)
+
+canvas.withSave {
+    canvas.translate(
+        (BITMAP_PADDING + BITMAP_SIZE / 2),
+        (BITMAP_PADDING + BITMAP_SIZE / 2)
+    )
+    // 倒着想 倒着写 总结的规律
+    canvas.clipRect(
+        -BITMAP_SIZE / 2,
+        -BITMAP_SIZE / 2,
+        BITMAP_SIZE / 2,
+        0f
+    )
+    canvas.translate(
+        -(BITMAP_PADDING + BITMAP_SIZE / 2),
+        -(BITMAP_PADDING + BITMAP_SIZE / 2)
+    )
+
+    canvas.drawBitmap(bitmap, BITMAP_PADDING, BITMAP_PADDING, paint)
+}
+
+
+```
+![clip-camera.png](https://upload-images.jianshu.io/upload_images/4997216-c1acf14ae79cf274.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
