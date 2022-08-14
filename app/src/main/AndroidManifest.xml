@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DQKotlin">
         <activity
+            android:name="com.dashingqi.view.animation.AnimationActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true"
             android:screenOrientation="portrait">
