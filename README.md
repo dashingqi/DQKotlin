@@ -120,3 +120,15 @@ canvas.withSave {
 
 ```
 ![clip-camera.png](https://upload-images.jianshu.io/upload_images/4997216-c1acf14ae79cf274.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+###### Drawable和Bitmap之间互转
+```kotlin
+
+// Bitmap转Drawable
+val bitmap = Bitmap.createBitmap(50, 60, Bitmap.Config.ARGB_8888)
+bitmap.toDrawable(resources)
+
+// Drawable转Bitmap
+val drawable = ColorDrawable("#FF0000".toColorInt())
+drawable.toBitmap()
+```

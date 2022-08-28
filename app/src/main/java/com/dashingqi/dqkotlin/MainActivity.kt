@@ -1,10 +1,15 @@
 package com.dashingqi.dqkotlin
 
+import android.graphics.Bitmap
+import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
+import androidx.core.graphics.drawable.toBitmap
+import androidx.core.graphics.drawable.toDrawable
+import androidx.core.graphics.toColorInt
 import com.dashingqi.coroutine.exception.coroutineException
 import com.dashingqi.coroutine.current.*
 import com.dashingqi.coroutine.exception.structMain
@@ -22,6 +27,12 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         mapOperate()
+
+        val bitmap = Bitmap.createBitmap(50, 60, Bitmap.Config.ARGB_8888)
+        bitmap.toDrawable(resources)
+
+        val drawable = ColorDrawable("#FF0000".toColorInt())
+        drawable.toBitmap()
 
 //        val runnable = Runnable {
 //            XToast<XToast<*>>(this)
