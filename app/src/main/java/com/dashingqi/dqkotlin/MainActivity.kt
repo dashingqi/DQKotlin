@@ -28,12 +28,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         mapOperate()
 
-        val bitmap = Bitmap.createBitmap(50, 60, Bitmap.Config.ARGB_8888)
-        bitmap.toDrawable(resources)
-
-        val drawable = ColorDrawable("#FF0000".toColorInt())
-        drawable.toBitmap()
-
 //        val runnable = Runnable {
 //            XToast<XToast<*>>(this)
 //                .apply {
