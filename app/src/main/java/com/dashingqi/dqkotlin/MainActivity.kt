@@ -15,6 +15,10 @@ import com.dashingqi.coroutine.current.*
 import com.dashingqi.coroutine.exception.structMain
 import com.dashingqi.coroutine.exception.supervisorJobMethod
 import com.dashingqi.http.HttpV2
+import com.dashingqi.objects.A
+import com.dashingqi.objects.B
+import com.dashingqi.objects.Main
+
 import com.dashingqi.service.ApiService
 import com.hjq.xtoast.XToast
 import kotlinx.coroutines.runBlocking

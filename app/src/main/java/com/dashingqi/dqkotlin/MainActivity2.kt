@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import com.dashingqi.iterators.model.Student
+import com.dashingqi.objects.*
 import kotlinx.coroutines.CoroutineScope
 
 val class1 = listOf<Student>(
@@ -238,5 +239,27 @@ class MainActivity2 : AppCompatActivity() {
 
     companion object {
         private const val TAG = "MainActivity2"
+    }
+
+    private fun methodA() {
+        // 这是一个匿名内部类，继承了抽象类的同时，实现了A、B两个接口
+        // 这种写法在Java中是不支持的
+        val item = object : Main(), A, B {
+            override fun funMain() {
+            }
+
+            override fun funA() {
+            }
+
+            override fun funB() {
+            }
+        }
+
+        Person.foo()
+        ObjectMain.findMain()
+        User.create("DashingQi")
+        val userManager = UserManager.getInstance("DA")
+        val personManager = PersonManager.getInstance("Qi")
+        Man.InnerSingleton.findMan()
     }
 }
