@@ -58,7 +58,8 @@ class UserManager private constructor(name: String) {
 
 class PersonManager private constructor(var name: String) {
     companion object : BaseSingleton<String, PersonManager>() {
-        override fun creator(params: String): PersonManager = PersonManager(name = params)
+        override val creator: (String) -> PersonManager
+            get() = ::PersonManager
     }
 
     fun managePerson() {
@@ -73,8 +74,7 @@ abstract class BaseSingleton<in P, out T> {
     private var instance: T? = null
 
     // 需要实现
-    @NonNull
-    abstract fun creator(params: P): T
+    abstract val creator: (P) -> T
 
     @NonNull
     fun getInstance(params: P): T =

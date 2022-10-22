@@ -18,6 +18,7 @@ import com.dashingqi.http.HttpV2
 import com.dashingqi.objects.A
 import com.dashingqi.objects.B
 import com.dashingqi.objects.Main
+import com.dashingqi.objects.PersonManager
 
 import com.dashingqi.service.ApiService
 import com.hjq.xtoast.XToast
@@ -115,6 +116,9 @@ class MainActivity : AppCompatActivity() {
         coroutineException()
 
         supervisorJobMethod()
+
+        val personManager = PersonManager.getInstance("Qi")
+        personManager.managePerson()
 
     }
 

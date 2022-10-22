@@ -42,6 +42,7 @@ class MainActivity2 : AppCompatActivity() {
         sliceStudent()
         sumScore()
         joinSource()
+        methodA()
     }
     // ==============================================过滤操作符================================================
     /**
@@ -259,7 +260,9 @@ class MainActivity2 : AppCompatActivity() {
         ObjectMain.findMain()
         User.create("DashingQi")
         val userManager = UserManager.getInstance("DA")
-        val personManager = PersonManager.getInstance("Qi")
         Man.InnerSingleton.findMan()
+
+        val personManager = PersonManager.getInstance("Qi")
+        personManager.managePerson()
     }
 }
