@@ -3,6 +3,9 @@ package com.dashingqi.dqkotlin
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.TextView
+import com.dashingqi.bys.Owner
+import com.dashingqi.bys.provideDelegate
 import com.dashingqi.iterators.model.Student
 import com.dashingqi.objects.*
 import kotlinx.coroutines.CoroutineScope
@@ -43,6 +46,7 @@ class MainActivity2 : AppCompatActivity() {
         sumScore()
         joinSource()
         methodA()
+        delegateFun()
     }
     // ==============================================过滤操作符================================================
     /**
@@ -106,14 +110,10 @@ class MainActivity2 : AppCompatActivity() {
      * take 操作符
      */
     private fun takeOperate() {
-        val first3 = class1
-            .sortedByDescending { it.score }
-            .take(3)
+        val first3 = class1.sortedByDescending { it.score }.take(3)
         Log.d(TAG, "first3 【take】 is $first3")
 
-        val last3 = class1
-            .sortedByDescending { it.score }
-            .takeLast(3)
+        val last3 = class1.sortedByDescending { it.score }.takeLast(3)
         Log.d(TAG, "last3 【takeLast】is $last3")
     }
 
@@ -122,10 +122,7 @@ class MainActivity2 : AppCompatActivity() {
      * 剔除的作用
      */
     private fun dropStudent() {
-        val middle = class1
-            .sortedByDescending { it.score }
-            .drop(3)
-            .dropLast(3)
+        val middle = class1.sortedByDescending { it.score }.drop(3).dropLast(3)
 
         Log.d(TAG, "middle 【drop】is $middle")
     }
@@ -134,15 +131,11 @@ class MainActivity2 : AppCompatActivity() {
      * slice 操作符
      */
     private fun sliceStudent() {
-        val first3 = class1
-            .sortedByDescending { it.score }
-            .slice(0..2)
+        val first3 = class1.sortedByDescending { it.score }.slice(0..2)
 
         val size = class1.size
 
-        val last3 = class1
-            .sortedByDescending { it.score }
-            .slice(size - 3 until size)
+        val last3 = class1.sortedByDescending { it.score }.slice(size - 3 until size)
 
         Log.d(
             TAG, """
@@ -162,20 +155,17 @@ class MainActivity2 : AppCompatActivity() {
      */
     private fun sumScore() {
         val sum1 = class1.sumOf { it.score }
-        val sum2 = class1
-            .map { it.score }
-            .reduce { acc, score ->
-                Log.d(
-                    TAG, """
+        val sum2 = class1.map { it.score }.reduce { acc, score ->
+            Log.d(
+                TAG, """
                     acc is $acc
                     score is $score
                 """.trimIndent()
-                )
-                acc + score
-            }
+            )
+            acc + score
+        }
 
-        val sum3 = class1
-            .map { it.score }
+        val sum3 = class1.map { it.score }
             // 这里传0 代表赋值了一个初始值
             .fold(0) { acc, score ->
                 Log.d(
@@ -197,17 +187,13 @@ class MainActivity2 : AppCompatActivity() {
     }
 
     private fun joinSource() {
-        val reduceResult = class1
-            .map { it.score.toString() }
-            .reduce { acc, s ->
-                acc + s
-            }
+        val reduceResult = class1.map { it.score.toString() }.reduce { acc, s ->
+            acc + s
+        }
 
-        val foldResult = class1
-            .map { it.score.toString() }
-            .fold("Prefix=") { acc, s ->
-                acc + s
-            }
+        val foldResult = class1.map { it.score.toString() }.fold("Prefix=") { acc, s ->
+            acc + s
+        }
 
         Log.d(
             TAG, """
@@ -264,5 +250,21 @@ class MainActivity2 : AppCompatActivity() {
 
         val personManager = PersonManager.getInstance("Qi")
         personManager.managePerson()
+    }
+
+    private fun delegateFun() {
+        val owner = Owner()
+        Log.d(TAG, owner.normalText)
+        Log.d(TAG, owner.logText)
+        val textView = findViewById<TextView>(R.id.tv)
+
+        // 通过委托的方式将name 委托给了textView
+        // 意味着name的getter和setter都将与textView关联到一起
+        var name: String? by textView
+
+        name = "dashing"
+        Log.d(TAG, "name is $name")
+        textView.text = "qi"
+        Log.d(TAG, "then name is $name")
     }
 }
