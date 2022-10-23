@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.TextView
+import com.dashingqi.bys.Item
 import com.dashingqi.bys.Owner
 import com.dashingqi.bys.provideDelegate
 import com.dashingqi.iterators.model.Student
@@ -266,5 +267,11 @@ class MainActivity2 : AppCompatActivity() {
         Log.d(TAG, "name is $name")
         textView.text = "qi"
         Log.d(TAG, "then name is $name")
+
+        val item = Item()
+        item.count = 2
+        Log.d(TAG, "total is ${item.total}")
+        item.total = 5
+        Log.d(TAG, "count is ${item.count}")
     }
 }
