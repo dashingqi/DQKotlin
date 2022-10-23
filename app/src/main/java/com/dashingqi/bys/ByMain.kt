@@ -35,6 +35,8 @@ class UniversalDB(db: DB) : DB by db
 class Item {
     // 将属性total委托给了属性count
     var count: Int = 0
+
+    // ::count 是属性的引用
     var total: Int by ::count
 }
 
@@ -74,6 +76,8 @@ class Owner {
 }
 
 // 提供委托
+
+// 要想在属性委托之前再做一些额外的判断工作，我们可以使用provideDelegate实现
 class SmartDelegator {
     // 使用provideDelegate来嵌套Delegator
     operator fun provideDelegate(thisRef: Owner, property: KProperty<*>): ReadWriteProperty<Owner, String> {
