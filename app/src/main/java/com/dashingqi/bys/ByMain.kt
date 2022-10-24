@@ -30,6 +30,19 @@ class GreenDaoDB : DB {
 
 class UniversalDB(db: DB) : DB by db
 
+// 等同于上述的方法
+class UniversalDB2() : DB {
+
+    private var mDB: DB? = null
+    fun setDB(db: DB) {
+        mDB = db
+    }
+
+    override fun save() {
+        mDB?.save()
+    }
+}
+
 // 委托属性
 
 class Item {
@@ -53,7 +66,7 @@ class Items {
 // 懒加载委托
 // 就是对于需要消耗计算机资源的操纵，我们希望被访问时才去触发
 
-// 自定义委托
+// 自定义委托  需要遵循Kotlin的语法规范
 // kotlin提供 ReadWriteProperty、ReadOnlyProperty接口来自定义委托
 // 如果是val属性自定义委托，就使用ReadOnlyProperty这个接口；
 // 使用这两个接口，编译器可以帮助我们自动实现get和set方法
@@ -70,9 +83,10 @@ class StringDelegate(var s: String = "Dashingqi") : ReadWriteProperty<Owner, Str
 }
 
 class Owner {
+    private val smartDelegator = SmartDelegator()
     var text: String by StringDelegate()
-    var normalText: String by SmartDelegator()
-    var logText: String by SmartDelegator()
+    var normalText: String by smartDelegator
+    var logText: String by smartDelegator
 }
 
 // 提供委托
@@ -86,6 +100,10 @@ class SmartDelegator {
         } else {
             StringDelegate("normal")
         }
+    }
+
+    fun getName():String{
+        return "DashingQi"
     }
 }
 
