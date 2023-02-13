@@ -83,4 +83,21 @@ class ListNodeDemo {
 //        list2 ?: return list1
 //
 //    }
+
+    /**
+     * 求出链表的中间结点
+     * @param head ListNode? 头结点
+     * @return ListNode? 中间结点
+     * 使用快慢指针的思想，一个走一个结点，一个走两个结点 当快结点走完时 此时慢结点就走到中间结点了
+     */
+    fun middleNode(head: ListNode?): ListNode? {
+        var fastNode = head
+        var slowNode = head
+        while (fastNode?.next != null) {
+            fastNode = fastNode.next?.next
+            slowNode = slowNode?.next
+        }
+
+        return slowNode
+    }
 }
