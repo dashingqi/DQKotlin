@@ -60,4 +60,76 @@ class ListNodeSolution {
         }
         return cur;
     }
+
+    public ListNode reverseListNode(ListNode head) {
+        ListNode cur = null;
+        ListNode pre = head;
+        while (pre != null) {
+            ListNode tempNode = pre.next;
+            pre.next = cur;
+            cur = pre;
+            pre = tempNode;
+        }
+        return cur;
+    }
+
+    public ListNode reverseListNode1(ListNode head) {
+        ListNode cur = null;
+        ListNode pre = head;
+        while (pre != null) {
+            ListNode tempNode = pre.next;
+            pre.next = cur;
+            cur = pre;
+            pre = tempNode;
+        }
+        return cur;
+    }
+
+    public ListNode reverseListNode2(ListNode head) {
+        ListNode cur = null;
+        ListNode pre = head;
+        while (pre != null) {
+            ListNode tempNode = pre.next;
+            pre.next = cur;
+            cur = pre;
+            pre = tempNode;
+        }
+        return cur;
+    }
+
+    public ListNode reverseListNode3(ListNode head) {
+        ListNode cur = null;
+        ListNode pre = head;
+        while (pre != null) {
+            ListNode tempNode = pre.next;
+            pre.next = cur;
+            cur = pre;
+            pre = tempNode;
+        }
+        return cur;
+    }
+
+    public ListNode reverseListNode4(ListNode head) {
+        ListNode cur = null;
+        ListNode pre = head;
+        while (pre != null) {
+            ListNode tempNode = pre.next;
+            pre.next = cur;
+            cur = pre;
+            pre = tempNode;
+        }
+        return cur;
+    }
+
+    public ListNode reverseListNode5(ListNode head) {
+        ListNode cur = null;
+        ListNode pre = head;
+        while (pre != null) {
+            ListNode tempNode = pre.next;
+            pre.next = cur;
+            cur = pre;
+            pre = tempNode;
+        }
+        return cur;
+    }
 }

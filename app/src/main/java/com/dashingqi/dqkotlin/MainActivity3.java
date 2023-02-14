@@ -4,10 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.appwidget.AppWidgetManager;
 import android.os.Bundle;
+import android.view.View;
 
 import com.dashingqi.objects.Main;
 import com.dashingqi.objects.Man;
 import com.dashingqi.objects.ObjectMain;
+import com.dashingqi.objects.ObjectMainKt;
 import com.dashingqi.objects.Person;
 
 public class MainActivity3 extends AppCompatActivity {
@@ -19,5 +21,9 @@ public class MainActivity3 extends AppCompatActivity {
         Person.foo();
         ObjectMain.INSTANCE.findMain();
         Man.InnerSingleton.INSTANCE.findMan();
+        findViewById(R.id.testContext).setOnClickListener(view -> {
+            ObjectMainKt.testContext(null);
+        });
+
     }
 }

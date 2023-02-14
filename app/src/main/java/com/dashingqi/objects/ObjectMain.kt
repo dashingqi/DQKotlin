@@ -1,5 +1,6 @@
 package com.dashingqi.objects
 
+import android.content.Context
 import android.util.Log
 import androidx.annotation.NonNull
 
@@ -81,5 +82,9 @@ abstract class BaseSingleton<in P, out T> {
         instance ?: synchronized(this) {
             instance ?: creator(params)
         }
+}
+
+fun testContext(context:Context){
+
 }
 

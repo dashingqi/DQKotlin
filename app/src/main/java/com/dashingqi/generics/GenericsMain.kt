@@ -68,13 +68,13 @@ class KFC : Food() {}
 
 // 声明处协变
 class Restaurant<out T : Food> {
-    fun orderFood(): T {
-    }
+//    fun orderFood(): T {
+//    }
 }
 
 // 使用处协变
 fun orderFood(restaurant: Restaurant<Food>) {
-    val food: Food = restaurant.orderFood()
+//    val food: Food = restaurant.orderFood()
 }
 // 星投影
 // 用星号作为泛型的实参，当我们不关心实参到底是什么类型的时候；
