@@ -37,6 +37,18 @@ class ListNodeDemo {
         return cur
     }
 
+    internal fun inverseListNode3(head: ListNode): ListNode? {
+        var cur: ListNode? = null
+        var pre: ListNode? = head
+        while (pre != null) {
+            val tempNode = pre.next
+            pre.next = cur
+            cur = pre
+            pre = tempNode
+        }
+        return cur
+    }
+
     /**
      * 环形链表 通过快慢指针
      * @param head ListNode?
@@ -73,6 +85,26 @@ class ListNodeDemo {
     }
 
     /**
+     * 同样是使用双指针
+     * @param head ListNode?
+     * @return Boolean
+     */
+    internal fun hasCycleListNode(head: ListNode?): Boolean {
+        head ?: return false
+        head.next ?: return false
+        var fast: ListNode? = head
+        var slow: ListNode? = head
+        while (fast?.next != null) {
+            fast = fast?.next?.next
+            slow = slow?.next
+            if (fast == slow) {
+                return true
+            }
+        }
+        return false
+    }
+
+    /**
      * 合并两个有序链表
      * @param list1 ListNode?
      * @param list2 ListNode?
@@ -98,6 +130,21 @@ class ListNodeDemo {
             slowNode = slowNode?.next
         }
 
+        return slowNode
+    }
+
+    /**
+     * 找出链表中的中间结点
+     * @param head ListNode?
+     * @return ListNode?
+     */
+    fun middleNode1(head: ListNode?): ListNode? {
+        var fastNode = head
+        var slowNode = head
+        while (fastNode?.next != null) {
+            fastNode = fastNode?.next?.next
+            slowNode = slowNode?.next
+        }
         return slowNode
     }
 }
