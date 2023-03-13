@@ -22,4 +22,30 @@ public class HalfSearch {
             return bSearchInternally(array, low, mid - 1, value);
         }
     }
+
+    /**
+     * 查找第一个值等于给定值的元素
+     * @param array
+     * @param low
+     * @param high
+     * @param value
+     * @return
+     */
+    private static int bSearchFirstValueInternally(int[] array, int low, int high, int value) {
+        while (low <= high) {
+            int mid = low + ((high - low) >> 1);
+            if (array[mid] > value) {
+                high = mid - 1;
+            } else if (array[mid] < value) {
+                low = mid + 1;
+            } else {
+                if ((mid == 0) || (array[mid - 1] != value)) {
+                    return mid;
+                } else {
+                    high = mid - 1;
+                }
+            }
+        }
+        return -1;
+    }
 }
