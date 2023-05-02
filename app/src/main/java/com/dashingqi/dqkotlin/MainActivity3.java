@@ -10,6 +10,7 @@ import android.view.View;
 import com.dashingqi.arithmetic.sort.BubbleSort;
 import com.dashingqi.arithmetic.sort.InsertSort;
 import com.dashingqi.arithmetic.sort.QuickSort;
+import com.dashingqi.intents.IntentsKt;
 import com.dashingqi.objects.Main;
 import com.dashingqi.objects.Man;
 import com.dashingqi.objects.ObjectMain;
@@ -44,6 +45,9 @@ public class MainActivity3 extends AppCompatActivity {
 //        int[] insertArray = {107, 56, 0, 33, 7, 24, 68, 12, 90, 100};
 //        int[] insertArrays = InsertSort.insertSort(insertArray);
 //        Log.d(TAG, "insertArrays = " + Arrays.toString(insertArrays));
+
+        String intentUri = IntentsKt.getIntentUri();
+        Log.d(TAG, "intentUri = " + intentUri);
 
     }
 }
