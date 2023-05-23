@@ -1,5 +1,6 @@
 package com.dashingqi.dqkotlin
 
+import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
@@ -21,6 +22,7 @@ import com.dashingqi.objects.Main
 import com.dashingqi.objects.PersonManager
 
 import com.dashingqi.service.ApiService
+import com.dashingqi.trys.tryMain
 import com.hjq.xtoast.XToast
 import kotlinx.coroutines.runBlocking
 import kotlin.concurrent.thread
@@ -119,6 +121,7 @@ class MainActivity : AppCompatActivity() {
 
         val personManager = PersonManager.getInstance("Qi")
         personManager.managePerson()
+        tryMain()
 
     }
 

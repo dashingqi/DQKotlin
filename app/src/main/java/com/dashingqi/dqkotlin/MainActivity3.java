@@ -16,6 +16,7 @@ import com.dashingqi.objects.Man;
 import com.dashingqi.objects.ObjectMain;
 import com.dashingqi.objects.ObjectMainKt;
 import com.dashingqi.objects.Person;
+import com.dashingqi.trys.TryMainKt;
 
 import java.util.Arrays;
 
@@ -45,6 +46,8 @@ public class MainActivity3 extends AppCompatActivity {
 //        int[] insertArray = {107, 56, 0, 33, 7, 24, 68, 12, 90, 100};
 //        int[] insertArrays = InsertSort.insertSort(insertArray);
 //        Log.d(TAG, "insertArrays = " + Arrays.toString(insertArrays));
+        int intValue = TryMainKt.tryMain();
+        Log.d("TryMain", "intValue = " + intValue);
 
         String intentUri = IntentsKt.getIntentUri();
         Log.d(TAG, "intentUri = " + intentUri);
