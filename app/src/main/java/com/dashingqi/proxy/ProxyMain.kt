@@ -1,5 +1,9 @@
 package com.dashingqi.proxy
 
+import java.lang.reflect.InvocationHandler
+import java.lang.reflect.Method
+import java.lang.reflect.Proxy
+
 /**
  * 静态代理
  * @author zhangqi61
@@ -14,4 +18,12 @@ fun proxyMain() {
     val movie = RealMovie()
     val cinema = Cinema(movie)
     cinema.play()
+
+    Proxy.newProxyInstance(Thread.currentThread().contextClassLoader, arrayOf(Movie::class.java), object
+        : InvocationHandler {
+        override fun invoke(proxy: Any?, method: Method?, args: Array<out Any>?): Any {
+            TODO("Not yet implemented")
+        }
+
+    })
 }
