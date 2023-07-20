@@ -1,10 +1,16 @@
 package com.dashingqi.dqkotlin;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.LayoutInflaterCompat;
 
 import android.appwidget.AppWidgetManager;
+import android.content.Context;
 import android.os.Bundle;
+import android.util.AttributeSet;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 
 import com.dashingqi.arithmetic.sort.BubbleSort;
@@ -25,6 +31,7 @@ public class MainActivity3 extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        recordViewCreateTime();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main3);
         Person.foo();
@@ -52,5 +59,30 @@ public class MainActivity3 extends AppCompatActivity {
         String intentUri = IntentsKt.getIntentUri();
         Log.d(TAG, "intentUri = " + intentUri);
 
+    }
+
+    /**
+     * 收集每个空间的加载耗时
+     */
+    private void recordViewCreateTime() {
+        LayoutInflaterCompat.setFactory2(getLayoutInflater(), new LayoutInflater.Factory2() {
+            @Nullable
+            @Override
+            public View onCreateView(@Nullable View parent, @NonNull String name,
+                                     @NonNull Context context, @NonNull AttributeSet attrs) {
+                Log.d(TAG, "onCreateView ---> name is " + name);
+                long start = System.currentTimeMillis();
+                getDelegate().createView(parent, name, context, attrs);
+                long end = System.currentTimeMillis();
+                Log.d(TAG, "onCreateView cost time is ---> " + (end - start));
+                return null;
+            }
+
+            @Nullable
+            @Override
+            public View onCreateView(@NonNull String name, @NonNull Context context, @NonNull AttributeSet attrs) {
+                return null;
+            }
+        });
     }
 }

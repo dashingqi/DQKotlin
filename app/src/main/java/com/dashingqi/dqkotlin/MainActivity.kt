@@ -1,16 +1,21 @@
 package com.dashingqi.dqkotlin
 
+import android.content.Context
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.AttributeSet
 import android.util.Log
+import android.view.LayoutInflater.Factory2
+import android.view.View
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.core.graphics.drawable.toBitmap
 import androidx.core.graphics.drawable.toDrawable
 import androidx.core.graphics.toColorInt
+import androidx.core.view.LayoutInflaterCompat
 import com.dashingqi.coroutine.exception.coroutineException
 import com.dashingqi.coroutine.current.*
 import com.dashingqi.coroutine.exception.structMain
@@ -127,6 +132,19 @@ class MainActivity : AppCompatActivity() {
 
     companion object {
         private const val TAG = "MainActivity"
+    }
+
+    private fun recordViewTime() {
+        LayoutInflaterCompat.setFactory2(layoutInflater, object : Factory2 {
+            override fun onCreateView(parent: View?, name: String, context: Context, attrs: AttributeSet): View? {
+                return null
+            }
+
+            override fun onCreateView(name: String, context: Context, attrs: AttributeSet): View? {
+                return null
+            }
+
+        })
     }
 
 }
