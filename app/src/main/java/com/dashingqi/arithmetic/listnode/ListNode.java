@@ -6,8 +6,8 @@ package com.dashingqi.arithmetic.listnode;
  * @time : 2022/9/18 15:51
  */
 public class ListNode {
-    int val;
-    ListNode next;
+    public int val;
+    public ListNode next;
 
     ListNode() {
     }
