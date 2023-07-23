@@ -7,6 +7,30 @@ package com.dashingqi.arithmetic.solution
 class DQSolution {
 
     /**
+     * 动态规划 查找最长递增子序列
+     * @param nums IntArray 数组
+     * @return Int 递增子序列的长度
+     */
+    fun method(nums: IntArray): Int {
+        if (nums.isEmpty()) {
+            return 0
+        }
+        val dp = intArrayOf(nums.size)
+        dp[0] = 1
+        var max = 0
+        for (i in 1 until nums.size) {
+            dp[i] = 1
+            for (j in 0 until i) {
+                if (nums[i] > nums[j]) {
+                    dp[i] = dp[i].coerceAtLeast(dp[j] + 1)
+                }
+            }
+            max = max.coerceAtLeast(dp[i])
+        }
+        return max
+    }
+
+    /**
      * 搜索插入元素
      * @param nums IntArray
      * @param target Int
