@@ -13,6 +13,28 @@ import java.util.HashMap;
 public class DQJavaSolution {
 
     /**
+     * 十进制转换成二进制
+     * @param num 十进制数值
+     * @return 二进制字符串
+     */
+    public static String decimalToBinary(int num) {
+        if (num == 0) {
+            return "0";
+        }
+
+        StringBuilder sb = new StringBuilder();
+
+        while (num > 0) {
+
+            sb.insert(0, num % 2);
+            num /= 2;
+
+        }
+
+        return sb.toString();
+    }
+
+    /**
      * 无重复最长子串长度
      *
      * @param s 字串
@@ -152,10 +174,10 @@ public class DQJavaSolution {
             int tempValue = nums[i] - pre;
             if (tempValue == 1) {
                 tempCount++;
-                pre = tempValue;
+                pre = nums[i];
             } else if (tempValue > 1) {
                 maxCount = Math.max(maxCount, tempCount);
-                pre = tempValue;
+                pre = nums[i];
                 tempCount = 1;
             } else {
                 // do nothing
