@@ -48,7 +48,7 @@ public class MainActivity3 extends AppCompatActivity {
             QuickSort.quickSort(insertArray, 0, insertArray.length - 1);
         });
         int[] array = {1, 6, 0, 3, 7, 4, 68, 12, 90, 100};
-        int[] sortArray = BubbleSort.bubbleSort(array);
+        int[] sortArray = BubbleSort.bubbleSortOne(array);
         Log.d(TAG, "sortArray = " + Arrays.toString(sortArray));
 //        int[] insertArray = {107, 56, 0, 33, 7, 24, 68, 12, 90, 100};
 //        int[] insertArrays = InsertSort.insertSort(insertArray);
