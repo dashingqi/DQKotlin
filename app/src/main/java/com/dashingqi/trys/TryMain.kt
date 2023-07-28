@@ -23,6 +23,5 @@ fun tryMain(): Int {
     } finally {
         Log.d(TAG, "finally perform ")
     }
-
     return 0
 }
