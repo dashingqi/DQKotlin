@@ -17,7 +17,7 @@ public class DQJavaSolution {
      * @param num 十进制数值
      * @return 二进制字符串
      */
-    public static String decimalToBinary(int num) {
+    public static String decimalToBinaryOne(int num) {
         if (num == 0) {
             return "0";
         }
