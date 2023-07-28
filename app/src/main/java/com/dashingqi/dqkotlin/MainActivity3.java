@@ -13,9 +13,11 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 
+import com.dashingqi.arithmetic.solution.DQJavaSolution;
 import com.dashingqi.arithmetic.sort.BubbleSort;
 import com.dashingqi.arithmetic.sort.InsertSort;
 import com.dashingqi.arithmetic.sort.QuickSort;
+import com.dashingqi.design.lsp.LSPMain;
 import com.dashingqi.intents.IntentsKt;
 import com.dashingqi.objects.Main;
 import com.dashingqi.objects.Man;
@@ -58,6 +60,10 @@ public class MainActivity3 extends AppCompatActivity {
 
         String intentUri = IntentsKt.getIntentUri();
         Log.d(TAG, "intentUri = " + intentUri);
+
+        LSPMain.lspMethod();
+        String num2 = DQJavaSolution.decimalToBinary(8);
+        System.out.println("num2 = " + num2);
 
     }
 

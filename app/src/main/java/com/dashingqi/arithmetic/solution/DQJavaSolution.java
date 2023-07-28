@@ -228,4 +228,23 @@ public class DQJavaSolution {
         return hA;
 
     }
+
+    /**
+     * 10 进制转换成 2 进制
+     *
+     * @param decimalNumber 10 进制数字
+     * @return 二进制字符串
+     */
+    public static String decimalToBinary(int decimalNumber) {
+        if (decimalNumber == 0) {
+            return "0";
+        }
+        StringBuilder sb = new StringBuilder();
+        while (decimalNumber > 0) {
+            int num = decimalNumber % 2;
+            sb.insert(0, num);
+            decimalNumber = decimalNumber / 2;
+        }
+        return sb.toString();
+    }
 }
