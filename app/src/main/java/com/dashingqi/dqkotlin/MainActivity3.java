@@ -24,6 +24,7 @@ import com.dashingqi.objects.Man;
 import com.dashingqi.objects.ObjectMain;
 import com.dashingqi.objects.ObjectMainKt;
 import com.dashingqi.objects.Person;
+import com.dashingqi.operators.OperatorsMainKt;
 import com.dashingqi.trys.TryMainKt;
 
 import java.util.Arrays;
@@ -65,6 +66,8 @@ public class MainActivity3 extends AppCompatActivity {
         String num2 = DQJavaSolution.decimalToBinary(8);
         System.out.println("num2 = " + num2);
 
+        OperatorsMainKt.operatorMain();
+
     }
 
     /**
@@ -74,8 +77,7 @@ public class MainActivity3 extends AppCompatActivity {
         LayoutInflaterCompat.setFactory2(getLayoutInflater(), new LayoutInflater.Factory2() {
             @Nullable
             @Override
-            public View onCreateView(@Nullable View parent, @NonNull String name,
-                                     @NonNull Context context, @NonNull AttributeSet attrs) {
+            public View onCreateView(@Nullable View parent, @NonNull String name, @NonNull Context context, @NonNull AttributeSet attrs) {
                 Log.d(TAG, "onCreateView ---> name is " + name);
                 long start = System.currentTimeMillis();
                 getDelegate().createView(parent, name, context, attrs);
