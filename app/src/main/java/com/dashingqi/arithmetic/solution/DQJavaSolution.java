@@ -254,6 +254,7 @@ public class DQJavaSolution {
     }
 
     /**
+     * <<<<<<< HEAD
      * 三数之和
      *
      * @param nums
@@ -374,6 +375,47 @@ public class DQJavaSolution {
         end.next = end.next.next;
         // 返回结果链表
         return pre.next;
+    }
 
+    /**
+     * 字符串转成数字
+     *
+     * @param s 字符串
+     * @return 数字
+     */
+    public int myAtoi(String s) {
+        // 1.边界条件
+        if (s == null || s.length() == 0) {
+            return 0;
+        }
+
+        int length = s.length();
+        int index = 0;
+        int sign = 1;
+        int result = 0;
+
+        // 2. 去除' '
+        while (index < length && s.charAt(index) == ' ') {
+            index++;
+        }
+
+        // 3. 匹配正负数
+        if (index < length && (s.charAt(index) == '-' || s.charAt(index) == '+')) {
+            sign = s.charAt(index) == '-' ? -1 : 1;
+        }
+
+        // 字符转整数
+        while (index < length && Character.isDigit(s.charAt(index))) {
+            int digit = s.charAt(index) - '0';
+            if (result > Integer.MAX_VALUE / 10 || (result == Integer.MAX_VALUE / 10 && digit > Integer.MAX_VALUE % 10)) {
+                return sign == -1 ? Integer.MIN_VALUE : Integer.MAX_VALUE;
+            }
+
+            result = result * 10 + digit;
+            index++;
+        }
+
+
+        return result * sign;
     }
 }
