@@ -14,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 
 import com.dashingqi.annotation.KotlinJvmAnnotation;
+import com.dashingqi.annotation.KotlinJvmAnnotationKt;
 import com.dashingqi.annotation.KotlinJvmAnnotationOne;
 import com.dashingqi.arithmetic.solution.DQJavaSolution;
 import com.dashingqi.arithmetic.sort.BubbleSort;
@@ -73,6 +74,11 @@ public class MainActivity3 extends AppCompatActivity {
         OperatorsMainKt.operatorMain();
         KotlinJvmAnnotation.INSTANCE.getMethod();
         KotlinJvmAnnotationOne.Companion.getMethod();
+        KotlinJvmAnnotationKt.getStaticMethod();
+
+        KotlinJvmAnnotationOne kotlinJvmAnnotationOne = new KotlinJvmAnnotationOne();
+//        String name = kotlinJvmAnnotationOne.name;
+//        kotlinJvmAnnotationOne.name = "";
 
     }
 

@@ -11,10 +11,21 @@ object KotlinJvmAnnotation {
 }
 
 class KotlinJvmAnnotationOne{
+    var name = "dashingqi"
+
+    val thisName by lazy {
+        ""
+    }
 
     companion object {
         fun getMethod(){
 
         }
     }
+}
+
+fun getStaticMethod() {
+    val kotlinJvmAnnotationOne = KotlinJvmAnnotationOne()
+    kotlinJvmAnnotationOne.name = ""
+
 }
