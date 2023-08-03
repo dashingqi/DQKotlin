@@ -13,6 +13,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 
+import com.dashingqi.annotation.KotlinJvmAnnotation;
+import com.dashingqi.annotation.KotlinJvmAnnotationOne;
 import com.dashingqi.arithmetic.solution.DQJavaSolution;
 import com.dashingqi.arithmetic.sort.BubbleSort;
 import com.dashingqi.arithmetic.sort.InsertSort;
@@ -25,6 +27,7 @@ import com.dashingqi.objects.ObjectMain;
 import com.dashingqi.objects.ObjectMainKt;
 import com.dashingqi.objects.Person;
 import com.dashingqi.operators.OperatorsMainKt;
+import com.dashingqi.screen.AndroidScreen;
 import com.dashingqi.trys.TryMainKt;
 
 import java.util.Arrays;
@@ -66,7 +69,10 @@ public class MainActivity3 extends AppCompatActivity {
         String num2 = DQJavaSolution.decimalToBinary(8);
         System.out.println("num2 = " + num2);
 
+
         OperatorsMainKt.operatorMain();
+        KotlinJvmAnnotation.INSTANCE.getMethod();
+        KotlinJvmAnnotationOne.Companion.getMethod();
 
     }
 
