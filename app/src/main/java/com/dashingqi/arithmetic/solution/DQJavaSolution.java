@@ -1,5 +1,7 @@
 package com.dashingqi.arithmetic.solution;
 
+import android.text.TextUtils;
+
 import com.dashingqi.arithmetic.listnode.ListNode;
 
 import java.util.ArrayList;
@@ -296,5 +298,82 @@ public class DQJavaSolution {
             }
         }
         return sums;
+    }
+
+    /**
+     * 罗马数字转换成整数
+     *
+     * @param s
+     * @return
+     */
+    public int romanToInt(String s) {
+        // 1. 边界条件
+        if (TextUtils.isEmpty(s)) {
+            return 0;
+        }
+
+        // 2.存储映射关系
+        HashMap<Character, Integer> maps = new HashMap<Character, Integer>() {{
+            put('I', 1);
+            put('V', 5);
+            put('X', 10);
+            put('L', 50);
+            put('C', 100);
+            put('D', 500);
+            put('M', 1000);
+        }};
+
+
+        // 2.1 字符串长度
+        int len = s.length();
+        int sum = 0;
+        int preNum = maps.get(s.charAt(0));
+        // 3 循环遍历获取值
+        for (int i = 1; i < len; i++) {
+            int currentNum = maps.get(s.charAt(i));
+            if (preNum < currentNum) {
+                sum -= preNum;
+            } else {
+                sum += preNum;
+            }
+            preNum = currentNum;
+        }
+        sum += preNum;
+        return sum;
+    }
+
+    /**
+     * 给出一个链表，删除倒数第 n 个节点
+     *
+     * @param head 链表
+     * @param n    倒数第几个
+     * @return 目标链表
+     */
+    public ListNode removeNthFromEnd(ListNode head, int n) {
+        // 1. 边界条件判断
+//        if (head == null || head.next == null) {
+//            return head;
+//        }
+        // 2. 预指针
+        ListNode pre = new ListNode(0);
+        pre.next = head;
+        ListNode start = pre, end = pre;
+        //  3.让 start 指针先走 n 步骤
+        while (n > 0) {
+            start = start.next;
+            n--;
+        }
+
+        // 4. 走 start 和 end
+        while (start.next != null) {
+            start = start.next;
+            end = end.next;
+        }
+
+        // 5. 返回end.next 就是要移除的节点
+        end.next = end.next.next;
+        // 返回结果链表
+        return pre.next;
+
     }
 }
