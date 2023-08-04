@@ -2,8 +2,10 @@ package com.dashingqi.arithmetic.solution;
 
 import com.dashingqi.arithmetic.listnode.ListNode;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 
 /**
  * @author : zhangqi
@@ -14,6 +16,7 @@ public class DQJavaSolution {
 
     /**
      * 十进制转换成二进制
+     *
      * @param num 十进制数值
      * @return 二进制字符串
      */
@@ -246,5 +249,52 @@ public class DQJavaSolution {
             decimalNumber = decimalNumber / 2;
         }
         return sb.toString();
+    }
+
+    /**
+     * 三数之和
+     *
+     * @param nums
+     * @return
+     */
+    public List<List<Integer>> threeSum(int[] nums) {
+        List<List<Integer>> sums = new ArrayList<>();
+        //1. 边界条件
+        if (nums == null || nums.length < 3) {
+            return sums;
+        }
+
+        // 2 进行排序
+        Arrays.sort(nums);
+        // 长度
+        int len = nums.length;
+        // 3. 循环遍历计算求和
+        for (int i = 0; i < len; i++) {
+            // 3.1
+            if (nums[i] > 0) {
+                break;
+            }
+            // 3.2 去重
+            if (i > 0 && nums[i] == nums[i - 1]) {
+                continue;
+            }
+
+            // 3.3 双指针
+            int L = i + 1;
+            int R = len - 1;
+
+            //3.4 真正计算求和
+            while (L < R) {
+                int sum = nums[i] + nums[L] + nums[R];
+                if (sum == 0) {
+                    sums.add(Arrays.asList(nums[i], nums[L], nums[R]));
+                } else if (sum < 0) {
+                    L++;
+                } else {
+                    R--;
+                }
+            }
+        }
+        return sums;
     }
 }
