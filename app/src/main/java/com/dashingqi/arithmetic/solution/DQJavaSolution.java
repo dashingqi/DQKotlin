@@ -418,4 +418,31 @@ public class DQJavaSolution {
 
         return result * sign;
     }
+
+    /**
+     * 找出字符串中第一个匹配项的下标
+     *
+     * @param haystack 原始字符串
+     * @param needle   匹配项目
+     * @return 角标
+     */
+    public int strStr(String haystack, String needle) {
+        // 1. 边界条件
+        if (haystack.isEmpty() || needle.isEmpty()) {
+            return -1;
+        }
+
+        int m = haystack.length(), n = needle.length();
+        char[] s = haystack.toCharArray(), p = needle.toCharArray();
+        for (int i = 0; i <= m - n; i++) {
+            int a = i, b = 0;
+            while (b < m && s[a] == p[b]) {
+                a++;
+                b++;
+            }
+            if (b == m) return i;
+        }
+
+        return -1;
+    }
 }
