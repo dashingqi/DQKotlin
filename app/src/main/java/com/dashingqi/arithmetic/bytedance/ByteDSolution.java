@@ -13,7 +13,7 @@ import java.util.HashMap;
 public class ByteDSolution {
 
     /**
-     * 两数相加
+     * 两数相加(1)
      * 主要是先取进位，用于下次两链表相加时所用；默认是0
      * 然后取余数，余数是当前链表的节点
      *
@@ -51,8 +51,9 @@ public class ByteDSolution {
     }
 
     /**
-     * 两数之和
-     * @param nums 数组
+     * 两数之和(2)
+     *
+     * @param nums   数组
      * @param target 和
      * @return 角标数组
      */
@@ -74,5 +75,18 @@ public class ByteDSolution {
             }
         }
         return new int[0];
+    }
+
+    /**
+     * （5）
+     * 最长回文字符串
+     *
+     * @param s 字符串
+     * @return 最长的回文串
+     */
+    public String longestPalindrome(String s) {
+        // 边界条件
+        if (s.isEmpty()) return "";
+
     }
 }
