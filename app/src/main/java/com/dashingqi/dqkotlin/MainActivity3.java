@@ -77,6 +77,13 @@ public class MainActivity3 extends AppCompatActivity {
         KotlinJvmAnnotationKt.getStaticMethod();
 
         KotlinJvmAnnotationOne kotlinJvmAnnotationOne = new KotlinJvmAnnotationOne();
+        KotlinJvmAnnotationOne one = kotlinJvmAnnotationOne;
+        kotlinJvmAnnotationOne.setName("heiha");
+        String name = one.getName();
+        Log.d(TAG, "onCreate: name ----> " + name);
+        kotlinJvmAnnotationOne = null;
+        String afterName = one.getName();
+        Log.d(TAG, "after onCreate: name ----> " + afterName);
 //        String name = kotlinJvmAnnotationOne.name;
 //        kotlinJvmAnnotationOne.name = "";
 

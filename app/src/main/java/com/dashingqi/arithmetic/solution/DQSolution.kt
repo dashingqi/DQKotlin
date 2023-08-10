@@ -5,7 +5,6 @@ package com.dashingqi.arithmetic.solution
  * @since 2023/7/3
  */
 class DQSolution {
-
     /**
      * 动态规划 查找最长递增子序列
      * @param nums IntArray 数组
