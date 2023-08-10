@@ -78,6 +78,33 @@ public class ByteDSolution {
     }
 
     /**
+     * 最长无重复子串
+     *
+     * @param s 字符串
+     * @return 无重复子串长度
+     */
+    public int lengthOfLongestSubstring(String s) {
+        // 边界条件
+        if (s == null || s.length() == 0) {
+            return 0;
+        }
+        int strLen = s.toCharArray().length;
+        HashMap<Character, Integer> maps = new HashMap<>();
+        int start = 0, end = 0;
+        int maxLen = 0;
+        for (; end < strLen; end++) {
+            char value = s.charAt(end);
+            if (maps.containsKey(value)) {
+                start = Math.max(start, end);
+            } else {
+                maps.put(value, end);
+            }
+            maxLen = Math.max(maxLen, end - start + 1);
+        }
+        return maxLen;
+    }
+
+    /**
      * （5）
      * 最长回文字符串
      *
