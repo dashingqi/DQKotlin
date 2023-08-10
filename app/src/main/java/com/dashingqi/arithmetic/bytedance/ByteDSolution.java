@@ -3,6 +3,7 @@ package com.dashingqi.arithmetic.bytedance;
 import com.dashingqi.arithmetic.listnode.ListNode;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 
 /**
  * 按照出现的频率
@@ -78,6 +79,7 @@ public class ByteDSolution {
     }
 
     /**
+     * （3）
      * 最长无重复子串
      *
      * @param s 字符串
@@ -95,17 +97,17 @@ public class ByteDSolution {
         for (; end < strLen; end++) {
             char value = s.charAt(end);
             if (maps.containsKey(value)) {
-                start = Math.max(start, end);
-            } else {
-                maps.put(value, end);
+                int index = maps.get(value);
+                start = Math.max(start, index);
             }
             maxLen = Math.max(maxLen, end - start + 1);
+            maps.put(value, end + 1);
         }
         return maxLen;
     }
 
     /**
-     * （5）
+     * （6）
      * 最长回文字符串
      *
      * @param s 字符串
@@ -114,6 +116,68 @@ public class ByteDSolution {
     public String longestPalindrome(String s) {
         // 边界条件
         if (s.isEmpty()) return "";
+        return "";
 
+    }
+
+
+    /**
+     * （9）
+     * 反转链表
+     *
+     * @param head 链表
+     * @return 反转后链表
+     */
+    public ListNode reverseList(ListNode head) {
+
+        if (head == null) return null;
+        if (head.next == null) return head;
+
+        ListNode cur = null;
+        ListNode pre = head;
+        while (pre != null) {
+            ListNode tempNode = pre.next;
+            pre.next = cur;
+            cur = pre;
+            pre = tempNode;
+        }
+        return cur;
+    }
+}
+
+/**
+ * LRU 缓存 （5）
+ */
+class LRUCache {
+
+    private LinkedHashMap<Integer, Integer> maps;
+    private int capacity;
+
+    public LRUCache(int capacity) {
+        maps = new LinkedHashMap<>(capacity);
+        this.capacity = capacity;
+    }
+
+    public int get(int key) {
+        if (maps.containsKey(key)) {
+            int value = maps.remove(key);
+            maps.put(key, value);
+            return value;
+        }
+
+        return -1;
+
+    }
+
+    public void put(int key, int value) {
+        if (maps.containsKey(key)) {
+            maps.remove(key);
+            maps.put(key, value);
+            return;
+        }
+        maps.put(key, value);
+        if (maps.size() > capacity) {
+            maps.remove(maps.keySet().iterator().next());
+        }
     }
 }
