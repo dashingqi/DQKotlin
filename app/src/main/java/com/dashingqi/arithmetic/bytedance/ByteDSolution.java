@@ -29,7 +29,7 @@ public class ByteDSolution {
         int carry = 0;
         int d = 1;
         int c = 2;
-        int e = 4;
+        int c1 = 3;
         ListNode pre = new ListNode(0);
         ListNode cur = pre;
         while (l1 != null || l2 != null) {
