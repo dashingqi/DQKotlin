@@ -27,6 +27,7 @@ public class ByteDSolution {
 
         // 声明变量 保存进位
         int carry = 0;
+        int d = 1;
         ListNode pre = new ListNode(0);
         ListNode cur = pre;
         while (l1 != null || l2 != null) {
