@@ -1,5 +1,7 @@
 package com.dashingqi.arithmetic.solution;
 
+import com.dashingqi.arithmetic.listnode.ListNode;
+
 import java.util.HashMap;
 
 /**
@@ -126,6 +128,31 @@ public class StringSolution {
         }
 
         return -1;
+    }
+
+    /**
+     * 检查链表中是否存在环
+     *
+     * @param head 链表头节点
+     * @return true/false
+     */
+    public boolean hasCycle(ListNode head) {
+        if (head == null || head.next == null) {
+            return false;
+        }
+
+        ListNode slow = head;
+        ListNode fast = head.next;
+
+        while (slow != fast) {
+            if (fast == null || fast.next == null) {
+                return false;
+            }
+            slow = slow.next;
+            fast = fast.next.next;
+
+        }
+        return true;
     }
 
 }

@@ -3,7 +3,9 @@ package com.dashingqi.arithmetic.bytedance;
 import com.dashingqi.arithmetic.listnode.ListNode;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.LinkedHashMap;
+import java.util.Stack;
 
 /**
  * 按照出现的频率
@@ -27,9 +29,6 @@ public class ByteDSolution {
 
         // 声明变量 保存进位
         int carry = 0;
-        int d = 1;
-        int c = 2;
-        int c1 = 3;
         ListNode pre = new ListNode(0);
         ListNode cur = pre;
         while (l1 != null || l2 != null) {
@@ -147,7 +146,47 @@ public class ByteDSolution {
         }
         return cur;
     }
+
+    /**
+     * 整数反转
+     *
+     * @param num
+     * @return
+     */
+    public int reverseInt(int num) {
+        int total = 0;
+        while (num != 0) {
+            int capacity = num % 10;
+            if (num > Integer.MAX_VALUE) {
+                return 0;
+            }
+            if (num < -Integer.MAX_VALUE) {
+                return 0;
+            }
+            total = total * 10 + capacity;
+
+            num = num / 10;
+        }
+        return total;
+    }
+
+    /**
+     * 查找重复的数字
+     * @param nums 数字集合
+     * @return 查找的数字
+     */
+    public int findRepeatNumber(int[] nums) {
+        HashSet<Integer> set = new HashSet<>();
+        for (int num : nums) {
+            if (set.contains(num)) {
+                return num;
+            }
+            set.add(num);
+        }
+        return -1;
+    }
 }
+
 
 /**
  * LRU 缓存 （5）
@@ -170,7 +209,6 @@ class LRUCache {
         }
 
 
-
         return -1;
 
     }
@@ -184,6 +222,39 @@ class LRUCache {
         maps.put(key, value);
         if (maps.size() > capacity) {
             maps.remove(maps.keySet().iterator().next());
+        }
+    }
+}
+
+/**
+ * 两个栈实现队列
+ */
+class CQueue {
+    public CQueue() {
+    }
+
+    Stack<Integer> in = new Stack<>();
+
+    Stack<Integer> out = new Stack<>();
+
+    public void appendTail(int value) {
+        in.push(value);
+    }
+
+    public int deleteHead() {
+        if (out.isEmpty()) {
+            if (in != null && !in.isEmpty()) {
+                in2Out();
+            } else {
+                return -1;
+            }
+        }
+        return out.pop();
+    }
+
+    public void in2Out() {
+        while (!in.isEmpty()) {
+            out.push(in.pop());
         }
     }
 }
