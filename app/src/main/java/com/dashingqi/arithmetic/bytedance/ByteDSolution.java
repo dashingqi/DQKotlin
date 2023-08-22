@@ -2,10 +2,12 @@ package com.dashingqi.arithmetic.bytedance;
 
 import com.dashingqi.arithmetic.listnode.ListNode;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.Stack;
@@ -302,6 +304,29 @@ public class ByteDSolution {
             }
         }
         return ans;
+    }
+
+    /**
+     * 杨辉三角
+     *
+     * @param numRows 行数
+     * @return 存储的杨辉三角
+     */
+    public List<List<Integer>> generate(int numRows) {
+        List<List<Integer>> abs = new ArrayList<>();
+        for (int i = 0; i < numRows; i++) {
+            List<Integer> nums = new ArrayList<>();
+            for (int j = 0; j <= i; j++) {
+                if (j == 0 || j == i) {
+                    nums.add(1);
+                } else {
+                    nums.add(abs.get(i - 1).get(j - 1) + abs.get(i - 1).get(j));
+                }
+            }
+            abs.add(nums);
+        }
+
+        return abs;
     }
 }
 
