@@ -135,13 +135,16 @@ public class ByteDSolution {
      * @return 反转后链表
      */
     public ListNode reverseList(ListNode head) {
+        if (head == null) {
+            return null;
+        }
 
-        if (head == null) return null;
-        if (head.next == null) return head;
-
+        if (head.next == null) {
+            return head;
+        }
         ListNode cur = null;
         ListNode pre = head;
-        while (pre != null) {
+        while (pre.next != null) {
             ListNode tempNode = pre.next;
             pre.next = cur;
             cur = pre;
