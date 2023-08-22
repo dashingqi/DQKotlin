@@ -191,23 +191,49 @@ public class ByteDSolution {
     }
 
     /**
-     * 有效的括号
+     * 二分查找
      *
-     * @param s 括号字符串
-     * @return 是否是有效括号
+     * @param nums   数组
+     * @param target 目标值
+     * @return 目标值角标
+     */
+    public int search(int[] nums, int target) {
+        if (nums == null || nums.length == 0) {
+            return -1;
+        }
+        int len = nums.length;
+        int start = 0;
+        int end = len - 1;
+        while (start <= end) {
+            int halfIndex = start + (end - start) / 2;
+            int value = nums[halfIndex];
+            if (value == target) {
+                return halfIndex;
+            } else if (value > target) {
+                end = halfIndex - 1;
+            } else {
+                start = halfIndex + 1;
+            }
+        }
+        return -1;
+    }
+
+    /**
+     * 有效括号
+     *
+     * @param s
+     * @return
      */
     public boolean isValid(String s) {
-        if (s == null || s.length() == 0) {
+        if (s == null && s.length() == 0) {
             return false;
         }
-
         Map<Character, Character> maps = new HashMap<Character, Character>() {{
             put('(', ')');
             put('{', '}');
             put('[', ']');
             put('?', '?');
         }};
-
         if (!maps.containsKey(s.charAt(0))) {
             return false;
         }
@@ -246,6 +272,33 @@ public class ByteDSolution {
             fast = fast.next.next;
         }
         return true;
+    }
+
+    /**
+     * 最长公共前缀
+     *
+     * @param strs 字符串
+     * @return
+     */
+    public String longestCommonPrefix(String[] strs) {
+        if (strs == null || strs.length == 0) {
+            return "";
+        }
+        int len = strs.length;
+        String ans = strs[0];
+        for (int i = 1; i < strs.length; i++) {
+            int j = 0;
+            for (; j < ans.length() && j < strs[i].length(); j++) {
+                if (ans.charAt(j) != strs[i].charAt(j)) {
+                    break;
+                }
+            }
+            ans = ans.substring(0, j);
+            if ("".equals(ans)) {
+                return "";
+            }
+        }
+        return ans;
     }
 }
 
