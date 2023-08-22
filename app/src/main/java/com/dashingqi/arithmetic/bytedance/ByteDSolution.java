@@ -5,6 +5,9 @@ import com.dashingqi.arithmetic.listnode.ListNode;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedHashMap;
+import java.util.LinkedList;
+import java.util.Map;
+import java.util.Set;
 import java.util.Stack;
 
 /**
@@ -172,11 +175,12 @@ public class ByteDSolution {
 
     /**
      * 查找重复的数字
+     *
      * @param nums 数字集合
      * @return 查找的数字
      */
     public int findRepeatNumber(int[] nums) {
-        HashSet<Integer> set = new HashSet<>();
+        Set<Integer> set = new HashSet<>();
         for (int num : nums) {
             if (set.contains(num)) {
                 return num;
@@ -184,6 +188,41 @@ public class ByteDSolution {
             set.add(num);
         }
         return -1;
+    }
+
+    /**
+     * 有效的括号
+     *
+     * @param s 括号字符串
+     * @return 是否是有效括号
+     */
+    public boolean isValid(String s) {
+        if (s == null || s.length() == 0) {
+            return false;
+        }
+
+        Map<Character, Character> maps = new HashMap<Character, Character>() {{
+            put('(', ')');
+            put('{', '}');
+            put('[', ']');
+            put('?', '?');
+        }};
+
+        if (!maps.containsKey(s.charAt(0))) {
+            return false;
+        }
+
+        LinkedList<Character> lists = new LinkedList<>();
+        lists.add('?');
+        for (char tempValue : s.toCharArray()) {
+            if (maps.containsKey(tempValue)) {
+                // 存储 Value
+                lists.addLast(maps.get(tempValue));
+            } else if (lists.removeLast() != tempValue) {
+                return false;
+            }
+        }
+        return lists.size() == 1;
     }
 }
 
