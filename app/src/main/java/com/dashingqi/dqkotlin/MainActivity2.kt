@@ -48,6 +48,7 @@ class MainActivity2 : AppCompatActivity() {
         joinSource()
         methodA()
         delegateFun()
+        equalFun()
     }
     // ==============================================过滤操作符================================================
     /**
@@ -273,5 +274,25 @@ class MainActivity2 : AppCompatActivity() {
         Log.d(TAG, "total is ${item.total}")
         item.total = 5
         Log.d(TAG, "count is ${item.count}")
+    }
+
+    private fun equalFun() {
+        val a = 1000
+        val b = 1000
+
+        val x = "m"
+        val y = "m"
+
+        val m: Int? = 1
+        val n: Int? = 1
+
+        println(a == b)
+        println(a === b)
+
+        println(m == n)
+        println(m === n)
+
+        println(x == y)
+        println(x === y)
     }
 }
