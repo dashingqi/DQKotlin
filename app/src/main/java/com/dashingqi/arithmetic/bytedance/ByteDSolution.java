@@ -2,10 +2,12 @@ package com.dashingqi.arithmetic.bytedance;
 
 import com.dashingqi.arithmetic.listnode.ListNode;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.Stack;
@@ -135,13 +137,16 @@ public class ByteDSolution {
      * @return 反转后链表
      */
     public ListNode reverseList(ListNode head) {
+        if (head == null) {
+            return null;
+        }
 
-        if (head == null) return null;
-        if (head.next == null) return head;
-
+        if (head.next == null) {
+            return head;
+        }
         ListNode cur = null;
         ListNode pre = head;
-        while (pre != null) {
+        while (pre.next != null) {
             ListNode tempNode = pre.next;
             pre.next = cur;
             cur = pre;
@@ -191,23 +196,49 @@ public class ByteDSolution {
     }
 
     /**
-     * 有效的括号
+     * 二分查找
      *
-     * @param s 括号字符串
-     * @return 是否是有效括号
+     * @param nums   数组
+     * @param target 目标值
+     * @return 目标值角标
+     */
+    public int search(int[] nums, int target) {
+        if (nums == null || nums.length == 0) {
+            return -1;
+        }
+        int len = nums.length;
+        int start = 0;
+        int end = len - 1;
+        while (start <= end) {
+            int halfIndex = start + (end - start) / 2;
+            int value = nums[halfIndex];
+            if (value == target) {
+                return halfIndex;
+            } else if (value > target) {
+                end = halfIndex - 1;
+            } else {
+                start = halfIndex + 1;
+            }
+        }
+        return -1;
+    }
+
+    /**
+     * 有效括号
+     *
+     * @param s
+     * @return
      */
     public boolean isValid(String s) {
-        if (s == null || s.length() == 0) {
+        if (s == null && s.length() == 0) {
             return false;
         }
-
         Map<Character, Character> maps = new HashMap<Character, Character>() {{
             put('(', ')');
             put('{', '}');
             put('[', ']');
             put('?', '?');
         }};
-
         if (!maps.containsKey(s.charAt(0))) {
             return false;
         }
@@ -246,6 +277,56 @@ public class ByteDSolution {
             fast = fast.next.next;
         }
         return true;
+    }
+
+    /**
+     * 最长公共前缀
+     *
+     * @param strs 字符串
+     * @return
+     */
+    public String longestCommonPrefix(String[] strs) {
+        if (strs == null || strs.length == 0) {
+            return "";
+        }
+        int len = strs.length;
+        String ans = strs[0];
+        for (int i = 1; i < strs.length; i++) {
+            int j = 0;
+            for (; j < ans.length() && j < strs[i].length(); j++) {
+                if (ans.charAt(j) != strs[i].charAt(j)) {
+                    break;
+                }
+            }
+            ans = ans.substring(0, j);
+            if ("".equals(ans)) {
+                return "";
+            }
+        }
+        return ans;
+    }
+
+    /**
+     * 杨辉三角
+     *
+     * @param numRows 行数
+     * @return 存储的杨辉三角
+     */
+    public List<List<Integer>> generate(int numRows) {
+        List<List<Integer>> abs = new ArrayList<>();
+        for (int i = 0; i < numRows; i++) {
+            List<Integer> nums = new ArrayList<>();
+            for (int j = 0; j <= i; j++) {
+                if (j == 0 || j == i) {
+                    nums.add(1);
+                } else {
+                    nums.add(abs.get(i - 1).get(j - 1) + abs.get(i - 1).get(j));
+                }
+            }
+            abs.add(nums);
+        }
+
+        return abs;
     }
 }
 
