@@ -42,4 +42,31 @@ public class QuickSort {
         arr[j] = pivot;
         return j; // 返回枢轴的下标
     }
+
+    private static int partitionV1(int[] arr, int startIndex, int endIndex) {
+        int pivotValue = arr[startIndex];
+        int left = startIndex;
+        int right = endIndex;
+        while (left != right) {
+            while (left < right && arr[right] > pivotValue) {
+                right--;
+            }
+
+            while (left < right && arr[left] < pivotValue) {
+                left++;
+            }
+
+            // 交换 left 和 right
+            if (left < right) {
+                int tempValue = arr[left];
+                arr[left] = arr[right];
+                arr[right] = tempValue;
+            }
+        }
+
+        //角标值互换
+        arr[startIndex] = arr[left];
+        arr[left] = pivotValue;
+        return left;
+    }
 }
