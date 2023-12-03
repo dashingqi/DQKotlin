@@ -295,4 +295,13 @@ class MainActivity2 : AppCompatActivity() {
         println(x == y)
         println(x === y)
     }
+
+    val lock  = Any()
+    @Synchronized
+    fun useSynchronizedMethod(){
+
+        synchronized(lock){
+
+        }
+    }
 }

@@ -31,6 +31,7 @@ import com.dashingqi.operators.OperatorsMainKt;
 import com.dashingqi.screen.AndroidScreen;
 import com.dashingqi.trys.TryMainKt;
 
+import java.security.Provider;
 import java.util.Arrays;
 
 public class MainActivity3 extends AppCompatActivity {
@@ -40,6 +41,8 @@ public class MainActivity3 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         recordViewCreateTime();
         super.onCreate(savedInstanceState);
+
+
         setContentView(R.layout.activity_main3);
         Person.foo();
         ObjectMain.INSTANCE.findMain();
@@ -111,5 +114,9 @@ public class MainActivity3 extends AppCompatActivity {
                 return null;
             }
         });
+    }
+
+    public void method(Class<? extends Provider> delegation){
+
     }
 }
