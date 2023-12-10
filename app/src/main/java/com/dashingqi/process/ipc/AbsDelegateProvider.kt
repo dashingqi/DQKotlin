@@ -1,5 +1,6 @@
 package com.dashingqi.process.ipc
 
+import android.content.Context
 import android.os.Bundle
 
 /**
@@ -8,5 +9,5 @@ import android.os.Bundle
  * @time : 2023/12/3 11:06
  */
 abstract class AbsDelegateProvider {
-    abstract fun executeCall(params: Bundle?): Bundle
+    abstract fun executeCall(context: Context?, params: Bundle?): Bundle
 }

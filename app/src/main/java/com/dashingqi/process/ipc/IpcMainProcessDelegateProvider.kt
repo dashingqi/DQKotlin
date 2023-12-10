@@ -10,7 +10,6 @@ import android.net.Uri
 
 
 object IpcMainProcessDelegateProvider : IpcDelegateProvider() {
-
     private val MAIN_PROVIDER_AUTHORITIES: String = "${context?.packageName}.IpcMainDelegateProvider"
-    internal val PROVIDER_URI: Uri = Uri.parse(MAIN_PROVIDER_AUTHORITIES)
+    internal val PROVIDER_URI: Uri = Uri.parse("content://$MAIN_PROVIDER_AUTHORITIES")
 }

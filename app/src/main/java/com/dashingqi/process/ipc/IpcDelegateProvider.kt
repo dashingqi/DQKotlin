@@ -16,9 +16,10 @@ open class IpcDelegateProvider : SimpleContentProvider() {
         val delegateProvider = createDelegateProviderInstance(method) ?: return delegateBundle.apply {
             putInt(KEY_RESULT_CODE, CALL_ERROR_CODE)
         }
-        delegateProvider.executeCall(extras)
+        val resultBundle = delegateProvider.executeCall(context, extras)
         return delegateBundle.apply {
             putInt(KEY_RESULT_CODE, OK_ERROR_CODE)
+            putBundle(KEY_RESULT_BUNDLE, resultBundle)
         }
     }
 
@@ -26,7 +27,6 @@ open class IpcDelegateProvider : SimpleContentProvider() {
         kotlin.runCatching {
             val delegateClass = Class.forName(delegateClassName)
             delegateClass ?: return null
-
             val declaredConstructor = delegateClass.getDeclaredConstructor()
             declaredConstructor.isAccessible = true
             val newInstance = declaredConstructor.newInstance()
@@ -38,5 +38,10 @@ open class IpcDelegateProvider : SimpleContentProvider() {
             it.message.logD()
         }
         return null
+    }
+
+    companion object {
+        /** key result bundle */
+        internal const val KEY_RESULT_BUNDLE = "keyResultBundle"
     }
 }
