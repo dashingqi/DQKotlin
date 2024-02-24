@@ -5,7 +5,9 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.LayoutInflaterCompat;
 
+import android.annotation.SuppressLint;
 import android.appwidget.AppWidgetManager;
+import android.content.ComponentName;
 import android.content.Context;
 import android.os.Bundle;
 import android.util.AttributeSet;
@@ -30,6 +32,8 @@ import com.dashingqi.objects.Person;
 import com.dashingqi.operators.OperatorsMainKt;
 import com.dashingqi.screen.AndroidScreen;
 import com.dashingqi.trys.TryMainKt;
+import com.dashingqi.widget.pin.WidgetRequestPinsKt;
+import com.dashingqi.widget.view.ViewFlipperAppWidget;
 
 import java.security.Provider;
 import java.util.Arrays;
@@ -37,12 +41,11 @@ import java.util.Arrays;
 public class MainActivity3 extends AppCompatActivity {
     private static final String TAG = "MainActivity3";
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         recordViewCreateTime();
         super.onCreate(savedInstanceState);
-
-
         setContentView(R.layout.activity_main3);
         Person.foo();
         ObjectMain.INSTANCE.findMain();
@@ -90,6 +93,11 @@ public class MainActivity3 extends AppCompatActivity {
 //        String name = kotlinJvmAnnotationOne.name;
 //        kotlinJvmAnnotationOne.name = "";
 
+        findViewById(R.id.requestPin).setOnClickListener(v -> {
+            ComponentName componentName = new ComponentName(this, ViewFlipperAppWidget.class);
+            WidgetRequestPinsKt.requestPin(componentName, this);
+        });
+
     }
 
     /**
@@ -116,7 +124,7 @@ public class MainActivity3 extends AppCompatActivity {
         });
     }
 
-    public void method(Class<? extends Provider> delegation){
+    public void method(Class<? extends Provider> delegation) {
 
     }
 }
