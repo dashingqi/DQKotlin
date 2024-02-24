@@ -9,3 +9,4 @@ dependencyResolutionManagement {
 }
 rootProject.name = "DQKotlin"
 include ':app'
+include ':widget'

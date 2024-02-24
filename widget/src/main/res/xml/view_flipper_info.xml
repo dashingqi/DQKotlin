@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<appwidget-provider xmlns:android="http://schemas.android.com/apk/res/android"
+    android:initialLayout="@layout/support_simple_spinner_dropdown_item"
+    android:minWidth="250dp"
+    android:minHeight="110dp"
+    android:previewImage="@drawable/img_1"
+    android:updatePeriodMillis="36000000" />
