@@ -4,7 +4,7 @@
     <application>
         <receiver
             android:name=".view.ViewFlipperAppWidget"
-            android:exported="false">
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>
@@ -13,6 +13,12 @@
                 android:name="android.appwidget.provider"
                 android:resource="@xml/view_flipper_info" />
         </receiver>
+        <service
+            android:name=".flipper.ViewFlipperAdapterService"
+            android:exported="true"
+            android:permission="android.permission.BIND_REMOTEVIEWS">
+
+        </service>
     </application>
 
 </manifest>
